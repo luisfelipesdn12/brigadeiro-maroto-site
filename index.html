@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brigadeiro Maroto</title>
+
+    <link rel="shortcut icon" href="./assets/brigadeiro.png" type="image/x-icon">
+
+    <link href="./css/main.css" rel="stylesheet">
+
+    <script src="./js/main.js" type="module"></script>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="bg-orange-900 bg-opacity-50 p-3 pb-20 sm:grid sm:grid-cols-8 xl:grid-cols-6">
+        <div class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
+            <nav class="flex justify-between items-center my-4 container">
+                <!-- Home Page Button -->
+                <a href="/">
+                </a>
+                <!-- Buttons to left -->
+                <ul class="flex">
+                </ul>
+            </nav>
+            <img src="./assets/logo.jpg" alt="logo" class="w-40 bg-white mx-auto p-1 shadow-md rounded-full">
+            <h1 id="hero-title" class="font-bold text-gray-900 text-center mt-6 mb-5 text-4xl">
+                Brigadeiro Maroto
+            </h1>
+            <p id="hero-sentence" class="text-gray-800 text-center text-2xl">
+                Está afim de comer deliciosos brigadeiros? Veja nosso cardápio e saiba como fazer seu pedido!
+            </p>
+        </div>
+    </section>
+
+    <section class="p-3 py-16 px-3 sm:grid sm:grid-cols-8 xl:grid-cols-6">
+        <div class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
+            <!-- Title -->
+            <h1 class="font-bold text-gray-900 text-left text-4xl">
+                Cardápio:
+            </h1>
+            <!-- Description -->
+            <p class="text-gray-700 text-left text-2xl">
+                Nossos deliciosos sabores esperando por você!
+            </p>
+            <!-- Types Card List -->
+            <ul id="types-list" class="mt-8 md:flex md:flex-wrap" style="justify-content: space-between;">
+                <!-- Mock Type Card-->
+                <li class="mock-type-card max-w-sm rounded overflow-hidden shadow mb-3">
+                    <img src="https://via.placeholder.com/1280x720/edf2f7?text=%20&">
+                    <div class="px-6 py-4">
+                      <div class="font-bold text-xl mb-2">
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 50%;"/>
+                        </div>
+                      <p class="text-gray-700 text-base">
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 100%;"/>
+                        <br>
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 100%;"/>
+                        <br>
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 40%;"/>
+                      </p>
+                    </div>
+                </li>
+                <!-- Mock Type Card-->
+                <li class="mock-type-card max-w-sm rounded overflow-hidden shadow mb-3">
+                    <img src="https://via.placeholder.com/1280x720/edf2f7?text=%20&">
+                    <div class="px-6 py-4">
+                      <div class="font-bold text-xl mb-2">
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 50%;"/>
+                        </div>
+                      <p class="text-gray-700 text-base">
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 100%;"/>
+                        <br>
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 100%;"/>
+                        <br>
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 40%;"/>
+                      </p>
+                    </div>
+                </li>
+                <!-- Mock Type Card-->
+                <li class="mock-type-card max-w-sm rounded overflow-hidden shadow mb-3">
+                    <img src="https://via.placeholder.com/1280x720/edf2f7?text=%20&">
+                    <div class="px-6 py-4">
+                      <div class="font-bold text-xl mb-2">
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 50%;"/>
+                        </div>
+                      <p class="text-gray-700 text-base">
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 100%;"/>
+                        <br>
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 100%;"/>
+                        <br>
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 40%;"/>
+                      </p>
+                    </div>
+                </li>
+                <!-- Mock Type Card-->
+                <li class="mock-type-card max-w-sm rounded overflow-hidden shadow mb-3">
+                    <img src="https://via.placeholder.com/1280x720/edf2f7?text=%20&">
+                    <div class="px-6 py-4">
+                      <div class="font-bold text-xl mb-2">
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 50%;"/>
+                        </div>
+                      <p class="text-gray-700 text-base">
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 100%;"/>
+                        <br>
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 100%;"/>
+                        <br>
+                        <span class="rounded bg-gray-200 animate-pulse" style="padding-left: 40%;"/>
+                      </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="bg-yellow-200 py-12 px-3 pb-20 sm:grid sm:grid-cols-8 xl:grid-cols-6">
+        <div class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
+            <!-- Title -->
+            <h1 class="font-bold text-gray-900 text-left text-4xl">
+              Faça um pedido!
+            </h1>
+            <!-- Description -->
+            <p class="text-gray-700 text-left text-2xl">
+                Descubra como é fácil fazer um pedido, com a gente!
+            </p>
+            <span id="final-price">0</span>
+        </div>
+    </section>
+</body>
+</html>
