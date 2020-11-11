@@ -58,11 +58,18 @@ export function updateSendButton(ORDER) {
         }
     }
 
+    const sendButton = document.getElementById("send-button");
+
     if (hasOrders) {
         message += `\nTotal: ${document.getElementById("total-price").innerHTML}`;
+        
+        document.getElementById("add-an-item-alert").classList.add("hidden");
+        sendButton.href = encodeURI(`https://wa.me/${PHONE}/?text=` + message);
+        sendButton.target = "_target";
+    } else {
+        sendButton.target = "";
+        sendButton.href = "javascript:showAddAnItemAlert()";
     }
-
-    document.getElementById("send-button").href = encodeURI(`https://wa.me/${PHONE}/?text=` + message);
 }
 
 function updateQuantity(value, brigadeiroID, ORDER) {
@@ -80,7 +87,7 @@ function insertBrigadeiroCard(brigadeiro, ORDER) {
     const brigadeirosList = document.getElementById("brigadeiros-list");
 
     const card = document.createElement("li");
-    card.className = "brigadeiro-card max-w-sm rounded overflow-hidden shadow mb-3";
+    card.className = "brigadeiro-card max-w-sm rounded-xl overflow-hidden shadow mb-3";
     brigadeirosList.appendChild(card);
 
     const img = document.createElement("img");
@@ -140,7 +147,7 @@ function insertWishItem(brigadeiro, ORDER) {
 
     const wishItem = document.createElement("li");
     wishItem.id = "wish-item-" + brigadeiro.id;
-    wishItem.className = "wish-item rounded bg-white p-3 mb-3 max-w-sm md:w-1/2 shadow-md hidden";
+    wishItem.className = "wish-item rounded-xl bg-white p-3 mb-3 max-w-sm md:w-1/2 shadow-md hidden";
     finalWishList.appendChild(wishItem);
 
     const img = document.createElement("img");
