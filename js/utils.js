@@ -1,3 +1,4 @@
+import { PHONE } from '../data/constants.js';
 import { brigadeiros } from '../data/content.js';
 
 export function returnCleanNumber(numberAsString) {
@@ -44,6 +45,26 @@ function updateTotalPrice(ORDER) {
     totalPriceElement.innerHTML = priceFormat(finalValue);
 }
 
+export function updateSendButton(ORDER) {
+    let message = "Olá, Douglas! Gostaria de fazer um pedido.";
+    let hasOrders = false;
+
+    for (const brigadeiro of brigadeiros) {
+        if (ORDER[brigadeiro.id] > 0) {
+            if (!hasOrders) message += "\n\n";
+
+            hasOrders = true;
+            message += `${ORDER[brigadeiro.id]} un. ${brigadeiro.name}\n`;
+        }
+    }
+
+    if (hasOrders) {
+        message += `\nTotal: ${document.getElementById("total-price").innerHTML}`;
+    }
+
+    document.getElementById("send-button").href = encodeURI(`https://wa.me/${PHONE}/?text=` + message);
+}
+
 function updateQuantity(value, brigadeiroID, ORDER) {
     const quantityElement = document.getElementById("quantity-" + brigadeiroID);
     const finalValue = ORDER[brigadeiroID] + value > 0 ? ORDER[brigadeiroID] + value : 0;
@@ -51,7 +72,9 @@ function updateQuantity(value, brigadeiroID, ORDER) {
     quantityElement.innerHTML = ORDER[brigadeiroID] = finalValue;
     updateWishList(ORDER);
     updateTotalPrice(ORDER);
+    updateSendButton(ORDER);
 }
+
 
 function insertBrigadeiroCard(brigadeiro, ORDER) {
     const brigadeirosList = document.getElementById("brigadeiros-list");
@@ -94,7 +117,7 @@ function insertBrigadeiroCard(brigadeiro, ORDER) {
     
     const quantityElement = document.createElement("span");
     quantityElement.id = "quantity-" + brigadeiro.id;
-    quantityElement.className = "quantity font-medium";
+    quantityElement.className = "quantity select-none font-medium";
     quantityElement.innerHTML = ORDER[brigadeiro.id];
     
     const decrease = document.createElement("span");
@@ -147,7 +170,7 @@ function insertWishItem(brigadeiro, ORDER) {
     flexDiv.appendChild(price);
 }
 
-export function fillBrigadeirosList(brigadeiros, ORDER) {
+export function fillBrigadeirosList(ORDER) {
     for (let brigadeiro of brigadeiros) {
         insertBrigadeiroCard(brigadeiro, ORDER);
     }
@@ -155,7 +178,7 @@ export function fillBrigadeirosList(brigadeiros, ORDER) {
     hideClass("mock-brigadeiro-card");
 }
 
-export function fillFinalWishList(brigadeiros, ORDER) {
+export function fillFinalWishList(ORDER) {
     for (let brigadeiro of brigadeiros) {
         insertWishItem(brigadeiro, ORDER);
     }
