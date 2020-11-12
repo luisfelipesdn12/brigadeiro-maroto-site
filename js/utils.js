@@ -147,7 +147,7 @@ function insertWishItem(brigadeiro, ORDER) {
 
     const wishItem = document.createElement("li");
     wishItem.id = "wish-item-" + brigadeiro.id;
-    wishItem.className = "wish-item rounded-xl bg-white p-3 mb-3 max-w-sm md:w-1/2 shadow-md hidden";
+    wishItem.className = "wish-item rounded-xl bg-white py-4 px-6 mb-3 max-w-sm md:w-1/2 shadow-md hidden";
     finalWishList.appendChild(wishItem);
 
     const img = document.createElement("img");
