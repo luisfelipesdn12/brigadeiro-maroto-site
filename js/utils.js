@@ -1,7 +1,17 @@
 import { PHONE } from '../data/constants.js';
 import { brigadeiros } from '../data/content.js';
 
-export function returnCleanNumber(numberAsString) {
+/**
+ * returnCleanNumber takes some phone number and
+ * keep just the digits of it. Removing " ", "+"
+ * and "-" characters.
+ * @example
+ *      returnCleanNumber("+55 11 93141-5925")
+ *      // returns: "5511931415925"
+ * @param {string} numberAsString The phone number.
+ * @returns {string} The digits of the phone number.
+ */
+function returnCleanNumber(numberAsString) {
     return String(numberAsString)
             .replaceAll(" ", "")
             .replaceAll("+", "")
@@ -9,6 +19,11 @@ export function returnCleanNumber(numberAsString) {
             .toString();
 }
 
+/**
+ * hideClass add the class "hidden" for all the elements
+ * with the class name which is passed by parameter. 
+ * @param {string} className The class to be hided.
+ */
 function hideClass(className) {
     const elements = document.getElementsByClassName(className);
 
@@ -17,10 +32,26 @@ function hideClass(className) {
     }
 }
 
+/**
+ * priceFormat takes a number and returns it formated
+ * with the R$ prefix and two decimal places.
+ * @example
+ *      priceFormat(3.141592)
+ *      // returns: "R$ 3.14"
+ * @param {number} price The price to ber formated.
+ * @returns {string} The formated price.
+ */
 function priceFormat(price) {
     return "R$ " + price.toFixed(2);
 }
 
+/**
+ * updateWishList takes the ORDER object and for
+ * each flavor of brigadeiro, update the quantity
+ * in wish list. If the quantity is 0, it hides 
+ * it from the list. 
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
 function updateWishList(ORDER) {
     for (const brigadeiro of brigadeiros) {
         const wishItem = document.getElementById("wish-item-" + brigadeiro.id);
@@ -34,6 +65,12 @@ function updateWishList(ORDER) {
     }
 }
 
+/**
+ * updateTotalPrice takes the ORDER object, sums
+ * all the prices and insert the result in the 
+ * total price element. 
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
 function updateTotalPrice(ORDER) {
     const totalPriceElement = document.getElementById("total-price");
     let finalValue = 0;
@@ -45,8 +82,17 @@ function updateTotalPrice(ORDER) {
     totalPriceElement.innerHTML = priceFormat(finalValue);
 }
 
+/**
+ * updateSendButton takes the ORDER object and
+ * verifies if have some flavor ordered. If yes,
+ * it defines the href property of the send button
+ * to the automatic WhatsApp message with the order.
+ * Otherwise, it defines the href property to the
+ * showAddAnItemAlert function.
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
 export function updateSendButton(ORDER) {
-    let message = "Olá, Douglas! Gostaria de fazer um pedido.";
+    let message = "Olá, Douglas! Eu vim pelo site e gostaria de fazer um pedido.";
     let hasOrders = false;
 
     for (const brigadeiro of brigadeiros) {
@@ -64,7 +110,7 @@ export function updateSendButton(ORDER) {
         message += `\nTotal: ${document.getElementById("total-price").innerHTML}`;
         
         document.getElementById("add-an-item-alert").classList.add("hidden");
-        sendButton.href = encodeURI(`https://wa.me/${PHONE}/?text=` + message);
+        sendButton.href = encodeURI(`https://wa.me/${returnCleanNumber(PHONE)}/?text=` + message);
         sendButton.target = "_target";
     } else {
         sendButton.target = "";
@@ -72,6 +118,17 @@ export function updateSendButton(ORDER) {
     }
 }
 
+/**
+ * updateQuantity increase or decrease the quantity
+ * of a brigadeiro in the quantity element and in
+ * the ORDER object. If the final values is lower
+ * than 0, it is considered as 0. It calls the
+ * functions to update the wish list, the total
+ * price and the send button as well.
+ * @param {number} value Integer, how much to incrase the quantity (decrases if negative)
+ * @param {string} brigadeiroID The id of the brigadeiro like it's in content.js
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
 function updateQuantity(value, brigadeiroID, ORDER) {
     const quantityElement = document.getElementById("quantity-" + brigadeiroID);
     const finalValue = ORDER[brigadeiroID] + value > 0 ? ORDER[brigadeiroID] + value : 0;
