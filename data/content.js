@@ -53,34 +53,34 @@ export const brigadeiros = [
         name: "Brigadeiro",
         desc: "Bolo de pote com massa, ganache e creme de chocolate",
         price: 5,
-        img: "../assets/bolo-brigadeiro.png"
+        img: "../assets/bolo-brigadeiro.jpg"
     },
     {
         id: "NINHPT",
         name: "Leite Ninho",
         desc: "Bolo de pote com massa, brigadeiro e creme de Leite Ninho",
         price: 5,
-        img: "../assets/bolo-ninho.png"
+        img: "../assets/bolo-ninho.jpg"
     },
     {
         id: "CHMOPT",
         name: "Chocolate com Morango",
         desc: "Bolo de pote com massa e creme de chocolate, com pedaços de morango",
         price: 5,
-        img: "../assets/bolo-chocolate-morango.png"
+        img: "../assets/bolo-chocolate-morango.jpg"
     },
     {
         id: "NIMOPT",
         name: "Leite Ninho com Morango",
         desc: "Bolo de pote com massa e creme de Leite Ninho, com pedaços de morango",
         price: 5,
-        img: "../assets/bolo-ninho-morango.png"
+        img: "../assets/bolo-ninho-morango.jpg"
     },
     {
         id: "NICHPT",
         name: "Leite Ninho com Chocolate",
         desc: "Bolo de pote com massa e creme de Leite Ninho e chocolate",
         price: 5,
-        img: "../assets/bolo-ninho-chocolate.png"
+        img: "../assets/bolo-ninho-chocolate.jpg"
     }
 ];
