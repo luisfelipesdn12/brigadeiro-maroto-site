@@ -1,0 +1,14 @@
+{
+    "Creates a flavor in the Brigadeiro Maroto site" : {
+		"prefix": "bm-flavor",
+		"body": [
+			"{",
+			"\tid: \"${NAME00}\",",
+			"\tname: \"${name}\",",
+			"\tdesc: \"${description}\",",
+			"\tprice: ${price},",
+			"\timg: \"../assets/${path}\"",
+			"}"
+		]
+	}
+}
