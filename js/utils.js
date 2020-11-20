@@ -1,5 +1,7 @@
 import { PHONE } from '../data/constants.js';
-import { brigadeiros } from '../data/content.js';
+import { brigadeiros, cakes } from '../data/content.js';
+
+const flavors = brigadeiros.concat(cakes);
 
 /**
  * returnCleanNumber takes some phone number and
@@ -53,15 +55,15 @@ function priceFormat(price) {
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
 function updateWishList(ORDER) {
-    for (const brigadeiro of brigadeiros) {
-        const wishItem = document.getElementById("wish-item-" + brigadeiro.id);
-        ORDER[brigadeiro.id] > 0 ? wishItem.classList.remove("hidden") : wishItem.classList.add("hidden");
+    for (const flavor of flavors) {
+        const wishItem = document.getElementById("wish-item-" + flavor.id);
+        ORDER[flavor.id] > 0 ? wishItem.classList.remove("hidden") : wishItem.classList.add("hidden");
 
-        const quantity = document.getElementById("wish-item-quantity-" + brigadeiro.id);
-        quantity.innerHTML = ORDER[brigadeiro.id] + " un.";
+        const quantity = document.getElementById("wish-item-quantity-" + flavor.id);
+        quantity.innerHTML = ORDER[flavor.id] + " un.";
 
-        const price = document.getElementById("wish-item-price-" + brigadeiro.id);
-        price.innerHTML = priceFormat(ORDER[brigadeiro.id] * brigadeiro.price);
+        const price = document.getElementById("wish-item-price-" + flavor.id);
+        price.innerHTML = priceFormat(ORDER[flavor.id] * flavor.price);
     }
 }
 
@@ -75,8 +77,8 @@ function updateTotalPrice(ORDER) {
     const totalPriceElement = document.getElementById("total-price");
     let finalValue = 0;
 
-    for (const brigadeiro of brigadeiros) {
-        finalValue += (ORDER[brigadeiro.id] * brigadeiro.price);
+    for (const flavor of flavors) {
+        finalValue += (ORDER[flavor.id] * flavor.price);
     }
 
     totalPriceElement.innerHTML = priceFormat(finalValue);
@@ -92,19 +94,29 @@ function updateTotalPrice(ORDER) {
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
 export function updateSendButton(ORDER) {
-    let message = "Olá, Douglas! Eu vim pelo site e gostaria de fazer um pedido.";
-    let hasOrders = false;
+    let message = "Olá, Douglas! Eu vim pelo site e gostaria de fazer um pedido.\n\n";
+    let hasBrigadeirosOrders, hasCakesOrders = false;
 
     for (const brigadeiro of brigadeiros) {
         if (ORDER[brigadeiro.id] > 0) {
-            if (!hasOrders) message += "\n\n";
+            if (!hasBrigadeirosOrders) message += "*Brigadeiros:*\n";
 
-            hasOrders = true;
+            hasBrigadeirosOrders = true;
             message += `${ORDER[brigadeiro.id]} un. ${brigadeiro.name}\n`;
+        }
+    }
+    
+    for (const cake of cakes) {
+        if (ORDER[cake.id] > 0) {
+            if (!hasCakesOrders) message += "\n*Bolos de Pote:*\n";
+
+            hasCakesOrders = true;
+            message += `${ORDER[cake.id]} un. ${cake.name}\n`;
         }
     }
 
     const sendButton = document.getElementById("send-button");
+    const hasOrders = hasBrigadeirosOrders || hasCakesOrders;
 
     if (hasOrders) {
         message += `\nTotal: ${document.getElementById("total-price").innerHTML}`;
@@ -139,9 +151,16 @@ function updateQuantity(value, brigadeiroID, ORDER) {
     updateSendButton(ORDER);
 }
 
-
-function insertBrigadeiroCard(brigadeiro, ORDER) {
-    const brigadeirosList = document.getElementById("brigadeiros-list");
+/**
+ * insertFlavorCard takes a flavor object, the
+ * id of the list and the ORDER, then creates
+ * an list-item element and insert it on the list.
+ * @param {object} flavor The objects which represents a flavor, as seted in content.js
+ * @param {string} listID ID of the list to the card be added in.
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
+function insertFlavorCard(flavor, listID, ORDER) {
+    const brigadeirosList = document.getElementById(listID);
 
     const card = document.createElement("li");
     card.className = "brigadeiro-card max-w-sm rounded-xl overflow-hidden shadow mb-3";
@@ -149,7 +168,7 @@ function insertBrigadeiroCard(brigadeiro, ORDER) {
 
     const img = document.createElement("img");
     img.className = "w-full";
-    img.src = brigadeiro.img;
+    img.src = flavor.img;
     card.appendChild(img);
 
     const titleAndDescription = document.createElement("div");
@@ -158,17 +177,17 @@ function insertBrigadeiroCard(brigadeiro, ORDER) {
 
     const title = document.createElement("h1");
     title.className = "font-bold text-xl";
-    title.innerHTML = brigadeiro.name;
+    title.innerHTML = flavor.name;
     titleAndDescription.appendChild(title);
     
     const price = document.createElement("p");
     price.className = "text-gray-900 font-semibold text-lg mb-2";
-    price.innerHTML = priceFormat(brigadeiro.price);
+    price.innerHTML = priceFormat(flavor.price);
     titleAndDescription.appendChild(price);
 
     const description = document.createElement("p");
     description.className = "text-gray-700 text-base description";
-    description.innerHTML = brigadeiro.desc;
+    description.innerHTML = flavor.desc;
     titleAndDescription.appendChild(description);
 
     const divider = document.createElement("hr");
@@ -180,41 +199,48 @@ function insertBrigadeiroCard(brigadeiro, ORDER) {
     card.appendChild(quantityControl);
     
     const quantityElement = document.createElement("span");
-    quantityElement.id = "quantity-" + brigadeiro.id;
+    quantityElement.id = "quantity-" + flavor.id;
     quantityElement.className = "quantity select-none font-medium";
-    quantityElement.innerHTML = ORDER[brigadeiro.id];
+    quantityElement.innerHTML = ORDER[flavor.id];
     
     const decrease = document.createElement("span");
     decrease.className = "cursor-pointer select-none hover:bg-gray-200 rounded-full px-2";
     decrease.innerHTML = "-";
-    decrease.onclick = () => updateQuantity(-1, brigadeiro.id, ORDER);
+    decrease.onclick = () => updateQuantity(-1, flavor.id, ORDER);
     
     const increase = document.createElement("span");
     increase.className = "cursor-pointer select-none hover:bg-gray-200 rounded-full px-2";
     increase.innerHTML = "+";
-    increase.onclick = () => updateQuantity(1, brigadeiro.id, ORDER);
+    increase.onclick = () => updateQuantity(1, flavor.id, ORDER);
     
     quantityControl.appendChild(decrease);
     quantityControl.appendChild(quantityElement);
     quantityControl.appendChild(increase);
 }
 
-function insertWishItem(brigadeiro, ORDER) {
+/**
+ * insertWishItem takes a flavor object and the
+ * ORDER, then creates an list-item element and
+ * insert it on "final-wish-list".
+ * @param {object} flavor The objects which represents a flavor, as seted in content.js
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
+function insertWishItem(flavor, ORDER) {
     const finalWishList = document.getElementById("final-wish-list");
 
     const wishItem = document.createElement("li");
-    wishItem.id = "wish-item-" + brigadeiro.id;
+    wishItem.id = "wish-item-" + flavor.id;
     wishItem.className = "wish-item rounded-xl bg-white py-4 px-6 mb-3 max-w-sm md:w-1/2 shadow-md hidden";
     finalWishList.appendChild(wishItem);
 
     const img = document.createElement("img");
-    img.src = brigadeiro.img;
+    img.src = flavor.img;
     img.className = "rounded-full float-left w-10 mr-6 mb-3 shadow";
     wishItem.appendChild(img);
 
     const name = document.createElement("p");
     name.className = "text-gray-900 font-semibold";
-    name.innerHTML = brigadeiro.name;
+    name.innerHTML = flavor.name;
     wishItem.appendChild(name);
 
     const flexDiv = document.createElement("div");
@@ -222,29 +248,55 @@ function insertWishItem(brigadeiro, ORDER) {
     wishItem.appendChild(flexDiv);
 
     const quantity = document.createElement("p");
-    quantity.id = "wish-item-quantity-" + brigadeiro.id;
+    quantity.id = "wish-item-quantity-" + flavor.id;
     quantity.className = "text-gray-800 font-medium";
-    quantity.innerHTML = ORDER[brigadeiro.id] + " un.";
+    quantity.innerHTML = ORDER[flavor.id] + " un.";
     flexDiv.appendChild(quantity);
 
     const price = document.createElement("p");
-    price.id = "wish-item-price-" + brigadeiro.id;
+    price.id = "wish-item-price-" + flavor.id;
     price.className = "text-gray-800 font-medium";
-    price.innerHTML = priceFormat(ORDER[brigadeiro.id] * brigadeiro.price);
+    price.innerHTML = priceFormat(ORDER[flavor.id] * flavor.price);
     flexDiv.appendChild(price);
 }
 
+/**
+ * fillBrigadeirosList applies the 
+ * insertFlavorCard for each flavor in
+ * brigadeiros list, then hide the mock-cards.
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
 export function fillBrigadeirosList(ORDER) {
     for (let brigadeiro of brigadeiros) {
-        insertBrigadeiroCard(brigadeiro, ORDER);
+        insertFlavorCard(brigadeiro, "brigadeiros-list", ORDER);
     }
     
     hideClass("mock-brigadeiro-card");
 }
 
+/**
+ * fillCakesList applies the insertFlavorCard 
+ * for each flavor in cakes list, then hide
+ * the mock-cards.
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
+export function fillCakesList(ORDER) {
+    for (let cake of cakes) {
+        insertFlavorCard(cake, "cakes-list", ORDER);
+    }
+    
+    hideClass("mock-cake-card");
+}
+
+/**
+ * fillFinalWishList applies the 
+ * insertWishItem for each flavor in
+ * brigadeiros list, then hide the mock-items.
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
 export function fillFinalWishList(ORDER) {
-    for (let brigadeiro of brigadeiros) {
-        insertWishItem(brigadeiro, ORDER);
+    for (let flavor of flavors) {
+        insertWishItem(flavor, ORDER);
     }
 
     hideClass("mock-wish-item");

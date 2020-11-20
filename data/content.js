@@ -47,7 +47,10 @@ export const brigadeiros = [
         desc: "Brigadeiro de maracujá coberto com chocolate",
         price: 1.5,
         img: "../assets/maracuja-chocolate.jpg"
-    },
+    }
+];
+
+export const cakes = [
     {
         id: "BRIGPT",
         name: "Brigadeiro",
