@@ -4,37 +4,6 @@ import { brigadeiros, cakes } from '../data/content.js';
 const flavors = brigadeiros.concat(cakes);
 
 /**
- * returnCleanNumber takes some phone number and
- * keep just the digits of it. Removing " ", "+"
- * and "-" characters.
- * @example
- *      returnCleanNumber("+55 11 93141-5925")
- *      // returns: "5511931415925"
- * @param {string} numberAsString The phone number.
- * @returns {string} The digits of the phone number.
- */
-function returnCleanNumber(numberAsString) {
-    return String(numberAsString)
-            .replaceAll(" ", "")
-            .replaceAll("+", "")
-            .replaceAll("-", "")
-            .toString();
-}
-
-/**
- * hideClass add the class "hidden" for all the elements
- * with the class name which is passed by parameter. 
- * @param {string} className The class to be hided.
- */
-function hideClass(className) {
-    const elements = document.getElementsByClassName(className);
-
-    for (const element of elements) {
-        element.classList.add("hidden");
-    }
-}
-
-/**
  * priceFormat takes a number and returns it formated
  * with the R$ prefix and two decimal places.
  * @example
@@ -82,6 +51,24 @@ function updateTotalPrice(ORDER) {
     }
 
     totalPriceElement.innerHTML = priceFormat(finalValue);
+}
+
+/**
+ * returnCleanNumber takes some phone number and
+ * keep just the digits of it. Removing " ", "+"
+ * and "-" characters.
+ * @example
+ *      returnCleanNumber("+55 11 93141-5925")
+ *      // returns: "5511931415925"
+ * @param {string} numberAsString The phone number.
+ * @returns {string} The digits of the phone number.
+ */
+function returnCleanNumber(numberAsString) {
+    return String(numberAsString)
+            .replaceAll(" ", "")
+            .replaceAll("+", "")
+            .replaceAll("-", "")
+            .toString();
 }
 
 /**
@@ -258,6 +245,19 @@ function insertWishItem(flavor, ORDER) {
     price.className = "text-gray-800 font-medium";
     price.innerHTML = priceFormat(ORDER[flavor.id] * flavor.price);
     flexDiv.appendChild(price);
+}
+
+/**
+ * hideClass add the class "hidden" for all the elements
+ * with the class name which is passed by parameter. 
+ * @param {string} className The class to be hided.
+ */
+function hideClass(className) {
+    const elements = document.getElementsByClassName(className);
+
+    for (const element of elements) {
+        element.classList.add("hidden");
+    }
 }
 
 /**
