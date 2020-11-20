@@ -94,12 +94,12 @@ function updateTotalPrice(ORDER) {
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
 export function updateSendButton(ORDER) {
-    let message = "Olá, Douglas! Eu vim pelo site e gostaria de fazer um pedido.\n\n";
+    let message = "Olá, Douglas! Eu vim pelo site e gostaria de fazer um pedido.\n";
     let hasBrigadeirosOrders, hasCakesOrders = false;
 
     for (const brigadeiro of brigadeiros) {
         if (ORDER[brigadeiro.id] > 0) {
-            if (!hasBrigadeirosOrders) message += "*Brigadeiros:*\n";
+            if (!hasBrigadeirosOrders) message += `\nBrigadeiros:\n`;
 
             hasBrigadeirosOrders = true;
             message += `${ORDER[brigadeiro.id]} un. ${brigadeiro.name}\n`;
@@ -108,7 +108,7 @@ export function updateSendButton(ORDER) {
     
     for (const cake of cakes) {
         if (ORDER[cake.id] > 0) {
-            if (!hasCakesOrders) message += "\n*Bolos de Pote:*\n";
+            if (!hasCakesOrders) message += `\nBolos de Pote:\n`;
 
             hasCakesOrders = true;
             message += `${ORDER[cake.id]} un. ${cake.name}\n`;
