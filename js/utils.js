@@ -110,10 +110,10 @@ export function updateSendButton(ORDER) {
         
         document.getElementById("add-an-item-alert").classList.add("hidden");
         sendButton.href = encodeURI(`https://wa.me/${returnCleanNumber(PHONE)}/?text=` + message);
-        sendButton.target = "_target";
+        sendButton.rel = "external noopener noreferrer";
     } else {
-        sendButton.target = "";
         sendButton.href = "javascript:showAddAnItemAlert()";
+        sendButton.rel = "";
     }
 }
 
