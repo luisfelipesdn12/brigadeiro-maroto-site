@@ -42,11 +42,11 @@ export const brigadeiros = [
         img: "../assets/churros.jpg"
     },
     {
-        id: "MACH15",
-        name: "Maracujá com chocolate",
-        desc: "Brigadeiro de maracujá coberto com chocolate",
+        id: "MARA15",
+        name: "Maracujá",
+        desc: "Brigadeiro feito com polpa de maracujá coberto com granulado branco",
         price: 1.5,
-        img: "../assets/maracuja-chocolate.jpg"
+        img: "../assets/maracuja.jpg"
     }
 ];
 
