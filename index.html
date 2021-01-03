@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <title>Brigadeiro Maroto</title>
+    <title>Brigadeiro Maroto: Distribuindo Felicidade!</title>
     <meta name="title" content="Brigadeiro Maroto">
     <meta name="description" content="Está a fim de comer deliciosos brigadeiros? Veja nosso cardápio e saiba como fazer seu pedido!">
 
@@ -27,9 +27,12 @@
     <link rel="shortcut icon" href="./assets/brigadeiro.png" type="image/x-icon">
 
     <!-- CSS -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" as="style" onload="this.rel='stylesheet'">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" as="style" onload="this.rel='stylesheet'">
-    <link rel="stylesheet" href="./css/tailwind.min.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" as="style" onload="this.rel='stylesheet'" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" as="style" onload="this.rel='stylesheet'" crossorigin>
+    <link rel="preload" href="./css/fonts/GlacialIndifference-Regular.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="./css/fonts/GlacialIndifference-Bold.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="./css/fonts/GlacialIndifference-Italic.otf" as="font" type="font/otf" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
     <link rel="preload" href="./css/main.css" as="style" onload="this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="./css/main.css">
@@ -48,22 +51,34 @@
 </head>
 <body>
     <!-- Hero Section -->
-    <section class="bg-orange-900 bg-opacity-50 p-3 pb-20 sm:grid sm:grid-cols-8 xl:grid-cols-6">
+    <section id="hero-section" class="bg-orange-900 bg-opacity-50 p-3 pb-20 sm:grid sm:grid-cols-8 xl:grid-cols-6">
         <div class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
             <img src="./assets/logo.webp" alt="logo" class="w-40 h-40 bg-white mt-8 mx-auto p-1 shadow-md rounded-full">
-            <h1 id="hero-title" class="font-bold text-gray-900 text-center mt-6 mb-5 text-4xl">
+            <h1 id="hero-title" class="uppercase font-bold text-gray-900 text-center mt-6 mb-1 text-4xl">
                 Brigadeiro Maroto
             </h1>
-            <p id="hero-sentence" class="text-gray-800 text-center text-2xl">
-                Está a fim de comer deliciosos brigadeiros? Veja nosso cardápio e saiba como fazer seu pedido!
+            <p id="hero-sentence" class="text-gray-800 text-center text-3xl">
+                Distribuindo Felicidade!
             </p>
+            <ul class="flex justify-center mt-6">
+                <li class="w-12 h-12 p-1 m-2 shadow rounded-full bg-white">
+                    <a href="https://instagram.com/briga_deiromaroto" target="_blank">
+                        <img src="./assets/instagram.webp" alt="instagram logo">
+                    </a>
+                </li>
+                <li class="w-12 h-12 p-2 m-2 shadow rounded-full bg-white">
+                    <a href="https://www.tiktok.com/@brigadeiromaroto" target="_blank">
+                        <img src="./assets/tiktok.webp" alt="tiktok logo">
+                    </a>
+                </li>
+            </ul>
         </div>
     </section>
 
     <section class="p-3 py-16 px-3 sm:grid sm:grid-cols-8 xl:grid-cols-6">
         <div class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
             <!-- Title -->
-            <h1 class="font-bold text-gray-900 text-left text-4xl">
+            <h1 class="uppercase font-bold text-yellow-900 text-left text-4xl">
                 Brigadeiros:
             </h1>
             <!-- Description -->
@@ -143,7 +158,7 @@
     <section class="p-3 py-16 px-3 sm:grid sm:grid-cols-8 xl:grid-cols-6">
         <div class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
             <!-- Title -->
-            <h1 class="font-bold text-gray-900 text-left text-4xl">
+            <h1 class="uppercase font-bold text-yellow-900 text-left text-4xl">
                 Bolos de pote:
             </h1>
             <!-- Description -->
@@ -219,7 +234,7 @@
     <section class="bg-orange-900 bg-opacity-25 py-12 px-3 pb-20 sm:grid sm:grid-cols-8 xl:grid-cols-6">
         <div class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
             <!-- Title -->
-            <h1 class="font-bold text-gray-900 text-left text-4xl">
+            <h1 class="uppercase font-bold text-yellow-900 text-left text-4xl">
               Finalize seu pedido!
             </h1>
             <!-- Description -->

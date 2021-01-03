@@ -150,7 +150,7 @@ function insertFlavorCard(flavor, listID, ORDER) {
     const brigadeirosList = document.getElementById(listID);
 
     const card = document.createElement("li");
-    card.className = "brigadeiro-card max-w-sm rounded-xl overflow-hidden shadow mb-3";
+    card.className = "brigadeiro-card max-w-sm rounded-xl overflow-hidden shadow mb-3 bg-white";
     brigadeirosList.appendChild(card);
 
     const img = document.createElement("img");
@@ -163,7 +163,7 @@ function insertFlavorCard(flavor, listID, ORDER) {
     card.appendChild(titleAndDescription);
 
     const title = document.createElement("h1");
-    title.className = "font-bold text-xl";
+    title.className = "text-yellow-900 font-bold text-xl";
     title.innerHTML = flavor.name;
     titleAndDescription.appendChild(title);
     
@@ -183,6 +183,7 @@ function insertFlavorCard(flavor, listID, ORDER) {
 
     const quantityControl = document.createElement("div");
     quantityControl.className = "quantity-n-control flex justify-between text-gray-900 font-semibold text-lg px-6 py-4";
+    quantityControl.style = "font-family: 'Rubik', 'Open Sans', sans-serif;";
     card.appendChild(quantityControl);
     
     const quantityElement = document.createElement("span");
