@@ -26,6 +26,12 @@ html {
     font-family: 'Glacial Indifference', 'Rubik', 'Open Sans', sans-serif;
 }
 
+#hero-section {
+    background-image: url(../assets/cacos.webp);
+    background-size: 300px;
+    background-repeat: repeat-x;
+}
+
 @media(min-width: 768px) {
     .description {
         min-height: 50px;
