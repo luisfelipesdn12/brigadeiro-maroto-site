@@ -54,7 +54,7 @@ export const cakes = [
     {
         id: "BRIGPT",
         name: "Brigadeiro",
-        desc: "Bolo de pote com massa, ganache e creme de chocolate",
+        desc: "Bolo de pote com massa, brigadeiro e creme de chocolate",
         price: 5,
         img: "../assets/bolo-brigadeiro.webp"
     },
