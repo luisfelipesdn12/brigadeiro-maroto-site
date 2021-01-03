@@ -38,7 +38,7 @@ export const brigadeiros = [
         id: "CHUR14",
         name: "Churros",
         desc: "Brigadeiro de doce de leite e canela coberto com açúcar e canela",
-        price: 1.4,
+        price: 1.5,
         img: "../assets/churros.jpg"
     },
     {
