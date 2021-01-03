@@ -16,7 +16,7 @@ export const brigadeiros = [
     {
         id: "BEIJI1",
         name: "Beijinho",
-        desc: "Brigadeiro de côco",
+        desc: "Brigadeiro de coco",
         price: 1,
         img: "../assets/beijinho.jpg"
     },
