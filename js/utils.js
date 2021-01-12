@@ -42,12 +42,16 @@ function updateWishList(ORDER) {
  * total price element. 
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-function updateTotalPrice(ORDER) {
+export function updateTotalPrice(ORDER) {
     const totalPriceElement = document.getElementById("total-price");
     let finalValue = 0;
 
     for (const flavor of flavors) {
         finalValue += (ORDER[flavor.id] * flavor.price);
+    }
+
+    if (document.getElementById("shipping-option").checked == true) {
+        finalValue += 2;
     }
 
     totalPriceElement.innerHTML = priceFormat(finalValue);
@@ -111,9 +115,13 @@ export function updateSendButton(ORDER) {
         document.getElementById("add-an-item-alert").classList.add("hidden");
         sendButton.href = encodeURI(`https://wa.me/${returnCleanNumber(PHONE)}/?text=` + message);
         sendButton.rel = "external noopener noreferrer";
+        sendButton.classList.remove("cursor-not-allowed");
+        sendButton.classList.remove("opacity-75");
     } else {
-        sendButton.href = "javascript:showAddAnItemAlert()";
+        sendButton.removeAttribute("href");
         sendButton.rel = "";
+        sendButton.classList.add("cursor-not-allowed");
+        sendButton.classList.add("opacity-75");
     }
 }
 
