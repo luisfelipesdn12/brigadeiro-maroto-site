@@ -1,5 +1,6 @@
 import { brigadeiros, cakes } from '../data/content.js';
 import * as utils from './utils.js';
+import { getQuantity } from "../data/spreadsheet.js";
 
 const flavors = brigadeiros.concat(cakes);
 
@@ -10,7 +11,15 @@ document.getElementById("shipping-option").onchange = (ev) => {
     utils.updateTotalPrice(ORDER);
 }
 
-utils.fillBrigadeirosList(ORDER);
-utils.fillCakesList(ORDER);
-utils.fillFinalWishList(ORDER);
-utils.updateSendButton(ORDER);
+async function fill() {
+    // Object with flavour ID as key and the
+    // disponibility as value.
+    const quantity = await getQuantity();
+    
+    utils.fillBrigadeirosList(ORDER, quantity);
+    utils.fillCakesList(ORDER, quantity);
+    utils.fillFinalWishList(ORDER);
+    utils.updateSendButton(ORDER);
+}
+
+fill();

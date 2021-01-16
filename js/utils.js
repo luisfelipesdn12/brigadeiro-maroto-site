@@ -112,7 +112,6 @@ export function updateSendButton(ORDER) {
     if (hasOrders) {
         message += `\nTotal: ${document.getElementById("total-price").innerHTML}`;
         
-        document.getElementById("add-an-item-alert").classList.add("hidden");
         sendButton.href = encodeURI(`https://wa.me/${returnCleanNumber(PHONE)}/?text=` + message);
         sendButton.rel = "external noopener noreferrer";
         sendButton.classList.remove("cursor-not-allowed");
@@ -154,7 +153,7 @@ function updateQuantity(value, brigadeiroID, ORDER) {
  * @param {string} listID ID of the list to the card be added in.
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-function insertFlavorCard(flavor, listID, ORDER) {
+function insertFlavorCard(flavor, listID, ORDER, quantity) {
     const brigadeirosList = document.getElementById(listID);
 
     const card = document.createElement("li");
@@ -184,6 +183,12 @@ function insertFlavorCard(flavor, listID, ORDER) {
     description.className = "text-gray-700 text-base description";
     description.innerHTML = flavor.desc;
     titleAndDescription.appendChild(description);
+
+    const availability = document.createElement("p");
+    availability.id = `availability-${flavor.id}`;
+    availability.className = "text-yellow-900 text-base availability";
+    availability.innerHTML = quantity != 0 ? `${quantity} unidades disponíveis` : "Sabor indisponível";
+    titleAndDescription.appendChild(availability);
 
     const divider = document.createElement("hr");
     divider.className = "mx-3";
@@ -275,9 +280,9 @@ function hideClass(className) {
  * brigadeiros list, then hide the mock-cards.
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-export function fillBrigadeirosList(ORDER) {
+export function fillBrigadeirosList(ORDER, quantity) {
     for (let brigadeiro of brigadeiros) {
-        insertFlavorCard(brigadeiro, "brigadeiros-list", ORDER);
+        insertFlavorCard(brigadeiro, "brigadeiros-list", ORDER, quantity[brigadeiro.id]);
     }
     
     hideClass("mock-brigadeiro-card");
@@ -289,9 +294,9 @@ export function fillBrigadeirosList(ORDER) {
  * the mock-cards.
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-export function fillCakesList(ORDER) {
+export function fillCakesList(ORDER, quantity) {
     for (let cake of cakes) {
-        insertFlavorCard(cake, "cakes-list", ORDER);
+        insertFlavorCard(cake, "cakes-list", ORDER, quantity[cake.id]);
     }
     
     hideClass("mock-cake-card");
