@@ -184,11 +184,13 @@ function insertFlavorCard(flavor, listID, ORDER, quantity) {
     description.innerHTML = flavor.desc;
     titleAndDescription.appendChild(description);
 
-    const availability = document.createElement("p");
-    availability.id = `availability-${flavor.id}`;
-    availability.className = "text-yellow-900 text-base availability";
-    availability.innerHTML = quantity != 0 ? `${quantity} unidades disponíveis` : "Sabor indisponível";
-    titleAndDescription.appendChild(availability);
+    if (quantity) {
+        const availability = document.createElement("p");
+        availability.id = `availability-${flavor.id}`;
+        availability.className = "text-yellow-900 text-base availability";
+        availability.innerHTML = quantity != 0 ? `${quantity} unidades disponíveis` : "Sabor indisponível";
+        titleAndDescription.appendChild(availability);
+    }
 
     const divider = document.createElement("hr");
     divider.className = "mx-3";
@@ -294,9 +296,9 @@ export function fillBrigadeirosList(ORDER, quantity) {
  * the mock-cards.
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-export function fillCakesList(ORDER, quantity) {
+export function fillCakesList(ORDER) {
     for (let cake of cakes) {
-        insertFlavorCard(cake, "cakes-list", ORDER, quantity[cake.id]);
+        insertFlavorCard(cake, "cakes-list", ORDER);
     }
     
     hideClass("mock-cake-card");

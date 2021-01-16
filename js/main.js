@@ -13,7 +13,7 @@ document.getElementById("shipping-option").onchange = (ev) => {
 
 async function fill() {
     // Object with flavour ID as key and the
-    // disponibility as value.
+    // availability as value.
     const quantity = await getQuantity();
     
     utils.fillBrigadeirosList(ORDER, quantity);
