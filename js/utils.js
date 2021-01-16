@@ -42,12 +42,16 @@ function updateWishList(ORDER) {
  * total price element. 
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-function updateTotalPrice(ORDER) {
+export function updateTotalPrice(ORDER) {
     const totalPriceElement = document.getElementById("total-price");
     let finalValue = 0;
 
     for (const flavor of flavors) {
         finalValue += (ORDER[flavor.id] * flavor.price);
+    }
+
+    if (document.getElementById("shipping-option").checked == true) {
+        finalValue += 2;
     }
 
     totalPriceElement.innerHTML = priceFormat(finalValue);
@@ -95,7 +99,7 @@ export function updateSendButton(ORDER) {
     
     for (const cake of cakes) {
         if (ORDER[cake.id] > 0) {
-            if (!hasCakesOrders) message += `\nBolos de Pote:\n`;
+            if (!hasCakesOrders) message += `\nBolos de Pote (para encomenda):\n`;
 
             hasCakesOrders = true;
             message += `${ORDER[cake.id]} un. ${cake.name}\n`;
@@ -108,12 +112,15 @@ export function updateSendButton(ORDER) {
     if (hasOrders) {
         message += `\nTotal: ${document.getElementById("total-price").innerHTML}`;
         
-        document.getElementById("add-an-item-alert").classList.add("hidden");
         sendButton.href = encodeURI(`https://wa.me/${returnCleanNumber(PHONE)}/?text=` + message);
         sendButton.rel = "external noopener noreferrer";
+        sendButton.classList.remove("cursor-not-allowed");
+        sendButton.classList.remove("opacity-75");
     } else {
-        sendButton.href = "javascript:showAddAnItemAlert()";
+        sendButton.removeAttribute("href");
         sendButton.rel = "";
+        sendButton.classList.add("cursor-not-allowed");
+        sendButton.classList.add("opacity-75");
     }
 }
 
@@ -128,9 +135,13 @@ export function updateSendButton(ORDER) {
  * @param {string} brigadeiroID The id of the brigadeiro like it's in content.js
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-function updateQuantity(value, brigadeiroID, ORDER) {
+function updateQuantity(value, brigadeiroID, ORDER, availability) {
     const quantityElement = document.getElementById("quantity-" + brigadeiroID);
-    const finalValue = ORDER[brigadeiroID] + value > 0 ? ORDER[brigadeiroID] + value : 0;
+    let finalValue = ORDER[brigadeiroID] + value > 0 ? ORDER[brigadeiroID] + value : 0;
+
+    if (availability) {
+        finalValue = finalValue > availability ? availability : finalValue;
+    }
 
     quantityElement.innerHTML = ORDER[brigadeiroID] = finalValue;
     updateWishList(ORDER);
@@ -146,7 +157,7 @@ function updateQuantity(value, brigadeiroID, ORDER) {
  * @param {string} listID ID of the list to the card be added in.
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-function insertFlavorCard(flavor, listID, ORDER) {
+function insertFlavorCard(flavor, listID, ORDER, quantity) {
     const brigadeirosList = document.getElementById(listID);
 
     const card = document.createElement("li");
@@ -177,6 +188,14 @@ function insertFlavorCard(flavor, listID, ORDER) {
     description.innerHTML = flavor.desc;
     titleAndDescription.appendChild(description);
 
+    if (quantity) {
+        const availability = document.createElement("p");
+        availability.id = `availability-${flavor.id}`;
+        availability.className = "text-yellow-900 text-base availability";
+        availability.innerHTML = quantity != 0 ? `${quantity} unidades disponíveis` : "Sabor indisponível";
+        titleAndDescription.appendChild(availability);
+    }
+
     const divider = document.createElement("hr");
     divider.className = "mx-3";
     card.appendChild(divider);
@@ -194,12 +213,16 @@ function insertFlavorCard(flavor, listID, ORDER) {
     const decrease = document.createElement("span");
     decrease.className = "cursor-pointer select-none hover:bg-gray-200 rounded-full px-2";
     decrease.innerHTML = "-";
-    decrease.onclick = () => updateQuantity(-1, flavor.id, ORDER);
+    decrease.onclick = quantity ?
+                    () => updateQuantity(-1, flavor.id, ORDER, quantity) :
+                    () => updateQuantity(-1, flavor.id, ORDER);
     
     const increase = document.createElement("span");
     increase.className = "cursor-pointer select-none hover:bg-gray-200 rounded-full px-2";
     increase.innerHTML = "+";
-    increase.onclick = () => updateQuantity(1, flavor.id, ORDER);
+    increase.onclick = quantity ?
+                    () => updateQuantity(1, flavor.id, ORDER, quantity) :
+                    () => updateQuantity(1, flavor.id, ORDER);
     
     quantityControl.appendChild(decrease);
     quantityControl.appendChild(quantityElement);
@@ -267,9 +290,9 @@ function hideClass(className) {
  * brigadeiros list, then hide the mock-cards.
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-export function fillBrigadeirosList(ORDER) {
+export function fillBrigadeirosList(ORDER, quantity) {
     for (let brigadeiro of brigadeiros) {
-        insertFlavorCard(brigadeiro, "brigadeiros-list", ORDER);
+        insertFlavorCard(brigadeiro, "brigadeiros-list", ORDER, quantity[brigadeiro.id]);
     }
     
     hideClass("mock-brigadeiro-card");
