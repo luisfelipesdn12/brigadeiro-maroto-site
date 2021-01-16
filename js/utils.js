@@ -99,7 +99,7 @@ export function updateSendButton(ORDER) {
     
     for (const cake of cakes) {
         if (ORDER[cake.id] > 0) {
-            if (!hasCakesOrders) message += `\nBolos de Pote:\n`;
+            if (!hasCakesOrders) message += `\nBolos de Pote (para encomenda):\n`;
 
             hasCakesOrders = true;
             message += `${ORDER[cake.id]} un. ${cake.name}\n`;
@@ -135,9 +135,13 @@ export function updateSendButton(ORDER) {
  * @param {string} brigadeiroID The id of the brigadeiro like it's in content.js
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-function updateQuantity(value, brigadeiroID, ORDER) {
+function updateQuantity(value, brigadeiroID, ORDER, availability) {
     const quantityElement = document.getElementById("quantity-" + brigadeiroID);
-    const finalValue = ORDER[brigadeiroID] + value > 0 ? ORDER[brigadeiroID] + value : 0;
+    let finalValue = ORDER[brigadeiroID] + value > 0 ? ORDER[brigadeiroID] + value : 0;
+
+    if (availability) {
+        finalValue = finalValue > availability ? availability : finalValue;
+    }
 
     quantityElement.innerHTML = ORDER[brigadeiroID] = finalValue;
     updateWishList(ORDER);
@@ -209,12 +213,16 @@ function insertFlavorCard(flavor, listID, ORDER, quantity) {
     const decrease = document.createElement("span");
     decrease.className = "cursor-pointer select-none hover:bg-gray-200 rounded-full px-2";
     decrease.innerHTML = "-";
-    decrease.onclick = () => updateQuantity(-1, flavor.id, ORDER);
+    decrease.onclick = quantity ?
+                    () => updateQuantity(-1, flavor.id, ORDER, quantity) :
+                    () => updateQuantity(-1, flavor.id, ORDER);
     
     const increase = document.createElement("span");
     increase.className = "cursor-pointer select-none hover:bg-gray-200 rounded-full px-2";
     increase.innerHTML = "+";
-    increase.onclick = () => updateQuantity(1, flavor.id, ORDER);
+    increase.onclick = quantity ?
+                    () => updateQuantity(1, flavor.id, ORDER, quantity) :
+                    () => updateQuantity(1, flavor.id, ORDER);
     
     quantityControl.appendChild(decrease);
     quantityControl.appendChild(quantityElement);
