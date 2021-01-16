@@ -9,6 +9,7 @@ for (const flavor of flavors) ORDER[flavor.id] = 0;
 
 document.getElementById("shipping-option").onchange = (ev) => {
     utils.updateTotalPrice(ORDER);
+    utils.updateSendButton(ORDER);
 }
 
 async function fill() {

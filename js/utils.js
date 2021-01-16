@@ -106,6 +106,10 @@ export function updateSendButton(ORDER) {
         }
     }
 
+    if (document.getElementById("shipping-option").checked == true) {
+        message += "\nVou querer entrega! (R$ 2,00)\n";
+    }
+
     const sendButton = document.getElementById("send-button");
     const hasOrders = hasBrigadeirosOrders || hasCakesOrders;
 
