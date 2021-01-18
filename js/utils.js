@@ -84,43 +84,35 @@ function returnCleanNumber(numberAsString) {
  * showAddAnItemAlert function.
  * @param {object} ORDER The quantity of each flavor with the id as key.
  */
-export function updateSendButton(ORDER) {
+export async function updateSendButton(ORDER) {
     let message = "Olá, Douglas! Eu vim pelo site e gostaria de fazer um pedido.\n";
-    let hasBrigadeirosOrders, hasBrowniesOrders, hasCakesOrders = false;
 
-    for (const brigadeiro of brigadeiros) {
-        if (ORDER[brigadeiro.id] > 0) {
-            if (!hasBrigadeirosOrders) message += `\nBrigadeiros:\n`;
+    async function addToMessage(flavorList, titleOfFlavorType) {
+        let hasOrders = false;
 
-            hasBrigadeirosOrders = true;
-            message += `${ORDER[brigadeiro.id]} un. ${brigadeiro.name}\n`;
+        for (const flavor of flavorList) {
+            if (ORDER[flavor.id] > 0) {
+                if (!hasOrders) message += `\n${titleOfFlavorType}\n`;
+
+                hasOrders = true;
+                message += `${ORDER[flavor.id]} un. ${flavor.name}\n`;
+            }
         }
-    }
 
-    for (const brownie of brownies) {
-        if (ORDER[brownie.id] > 0) {
-            if (!hasBrowniesOrders) message += `\nBrownies:\n`;
+        return hasOrders;
+    };
 
-            hasBrowniesOrders = true;
-            message += `${ORDER[brownie.id]} un. ${brownie.name}\n`;
-        }
-    }
-    
-    for (const cake of cakes) {
-        if (ORDER[cake.id] > 0) {
-            if (!hasCakesOrders) message += `\nBolos de Pote (para encomenda):\n`;
-
-            hasCakesOrders = true;
-            message += `${ORDER[cake.id]} un. ${cake.name}\n`;
-        }
-    }
+    const hasOrders = [
+        await addToMessage(brigadeiros, "Brigadeiros:"),
+        await addToMessage(brownies, "Brownies:"),
+        await addToMessage(cakes, "Bolos de Pote (para encomenda):")
+    ].some(has => has == true);
 
     if (document.getElementById("shipping-option").checked == true) {
         message += "\nVou querer entrega! (R$ 2,00)\n";
     }
 
     const sendButton = document.getElementById("send-button");
-    const hasOrders = hasBrigadeirosOrders || hasBrowniesOrders || hasCakesOrders;
 
     if (hasOrders) {
         message += `\nTotal: ${document.getElementById("total-price").innerHTML}`;

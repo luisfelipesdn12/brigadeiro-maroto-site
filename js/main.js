@@ -15,9 +15,11 @@ async function fill() {
     // availability as value.
     const quantity = await getQuantity();
     
+    // Fill HTML lists of flavors types.
     utils.fillBrigadeirosList(ORDER, quantity);
     utils.fillBrowniesList(ORDER, quantity);
     utils.fillCakesList(ORDER, quantity);
+
     utils.fillFinalWishList(ORDER);
     utils.updateSendButton(ORDER);
 }
