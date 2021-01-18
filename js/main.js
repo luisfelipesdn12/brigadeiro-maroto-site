@@ -1,8 +1,6 @@
-import { brigadeiros, brownies, cakes } from '../data/content.js';
+import { flavors } from "./utils.js";
 import * as utils from './utils.js';
 import { getQuantity } from "../data/spreadsheet.js";
-
-const flavors = [...brigadeiros, ...brownies, ...cakes];
 
 const ORDER = {};
 for (const flavor of flavors) ORDER[flavor.id] = 0;

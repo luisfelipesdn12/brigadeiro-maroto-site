@@ -1,7 +1,7 @@
 import { PHONE } from '../data/constants.js';
 import { brigadeiros, brownies, cakes } from '../data/content.js';
 
-const flavors = brigadeiros.concat(cakes);
+export const flavors = [...brigadeiros, ...brownies, ...cakes];
 
 /**
  * priceFormat takes a number and returns it formated
@@ -120,7 +120,7 @@ export function updateSendButton(ORDER) {
     }
 
     const sendButton = document.getElementById("send-button");
-    const hasOrders = hasBrigadeirosOrders || hasCakesOrders;
+    const hasOrders = hasBrigadeirosOrders || hasBrowniesOrders || hasCakesOrders;
 
     if (hasOrders) {
         message += `\nTotal: ${document.getElementById("total-price").innerHTML}`;
