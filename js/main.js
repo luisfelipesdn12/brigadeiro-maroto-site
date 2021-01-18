@@ -1,8 +1,8 @@
-import { brigadeiros, cakes } from '../data/content.js';
+import { brigadeiros, brownies, cakes } from '../data/content.js';
 import * as utils from './utils.js';
 import { getQuantity } from "../data/spreadsheet.js";
 
-const flavors = brigadeiros.concat(cakes);
+const flavors = [...brigadeiros, ...brownies, ...cakes];
 
 const ORDER = {};
 for (const flavor of flavors) ORDER[flavor.id] = 0;
@@ -18,6 +18,7 @@ async function fill() {
     const quantity = await getQuantity();
     
     utils.fillBrigadeirosList(ORDER, quantity);
+    utils.fillBrowniesList(ORDER, quantity);
     utils.fillCakesList(ORDER, quantity);
     utils.fillFinalWishList(ORDER);
     utils.updateSendButton(ORDER);

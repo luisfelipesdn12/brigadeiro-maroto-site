@@ -1,5 +1,5 @@
 import { PHONE } from '../data/constants.js';
-import { brigadeiros, cakes } from '../data/content.js';
+import { brigadeiros, brownies, cakes } from '../data/content.js';
 
 const flavors = brigadeiros.concat(cakes);
 
@@ -300,6 +300,20 @@ export function fillBrigadeirosList(ORDER, quantity) {
     }
     
     hideClass("mock-brigadeiro-card");
+}
+
+/**
+ * fillBrowniesList applies the 
+ * insertFlavorCard for each flavor in
+ * brownies list, then hide the mock-cards.
+ * @param {object} ORDER The quantity of each flavor with the id as key.
+ */
+export function fillBrowniesList(ORDER, quantity) {
+    for (let brownie of brownies) {
+        insertFlavorCard(brownie, "brownies-list", ORDER, quantity[brownie.id]);
+    }
+    
+    hideClass("mock-brownie-card");
 }
 
 /**
