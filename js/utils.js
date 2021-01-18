@@ -86,7 +86,7 @@ function returnCleanNumber(numberAsString) {
  */
 export function updateSendButton(ORDER) {
     let message = "Olá, Douglas! Eu vim pelo site e gostaria de fazer um pedido.\n";
-    let hasBrigadeirosOrders, hasCakesOrders = false;
+    let hasBrigadeirosOrders, hasBrowniesOrders, hasCakesOrders = false;
 
     for (const brigadeiro of brigadeiros) {
         if (ORDER[brigadeiro.id] > 0) {
@@ -94,6 +94,15 @@ export function updateSendButton(ORDER) {
 
             hasBrigadeirosOrders = true;
             message += `${ORDER[brigadeiro.id]} un. ${brigadeiro.name}\n`;
+        }
+    }
+
+    for (const brownie of brownies) {
+        if (ORDER[brownie.id] > 0) {
+            if (!hasBrowniesOrders) message += `\nBrownies:\n`;
+
+            hasBrowniesOrders = true;
+            message += `${ORDER[brownie.id]} un. ${brownie.name}\n`;
         }
     }
     
