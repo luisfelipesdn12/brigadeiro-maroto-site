@@ -62,21 +62,21 @@ export const brownies = [
         id: "AVELBR",
         name: "Creme de Avelã",
         desc: "Irresistível brownie recheado de creme de avelã",
-        price: 7,
+        price: 6,
         img: "../assets/brownies/creme-de-avela.webp"
     },
     {
         id: "DOLEBR",
         name: "Doce de Leite",
         desc: "Irresistível brownie recheado com doce de leite cremoso",
-        price: 7,
+        price: 6,
         img: "../assets/brownies/doce-de-leite.webp"
     },
     {
         id: "BRIGBR",
         name: "Brigadeiro",
         desc: "Irresistível brownie recheado com incrível brigadeiro",
-        price: 7,
+        price: 6,
         img: "../assets/brownies/brigadeiro.webp"
     }
 ];
