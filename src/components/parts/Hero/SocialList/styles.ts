@@ -4,6 +4,8 @@ export const SocialListWrapper = styled.ul`
     display: flex;
     list-style: none;
     justify-content: center;
+    margin: 0;
+    padding: 0;
     margin-top: 1.5rem;
 `;
 

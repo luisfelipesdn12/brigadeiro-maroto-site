@@ -20,5 +20,137 @@
         "url": "https://brigadeiromaroto.now.sh/",
         "favicon": "/brigadeiro.png",
         "banner_url": "https://raw.githubusercontent.com/luisfelipesdn12/brigadeiro-maroto-site/master/assets/banner.png"
-    }
+    },
+    "products_sections": [
+        {
+            "name": "Brigadeiros",
+            "desc": "Nossos deliciosos sabores esperando por você!",
+            "products": [
+                {
+                    "id": "CLASS1",
+                    "name": "Clássico",
+                    "desc": "Brigadeiro Tradicional",
+                    "price": 1,
+                    "image_url": "/brigadeiros/tradicional.webp"
+                },
+                {
+                    "id": "NINU15",
+                    "name": "Ninho com Nuttela",
+                    "desc": "Brigadeiro de leite em pó recheado com Nutella",
+                    "price": 1.5,
+                    "image_url": "/brigadeiros/ninho-nuttela.webp"
+                },
+                {
+                    "id": "BEIJI1",
+                    "name": "Beijinho",
+                    "desc": "Brigadeiro de coco",
+                    "price": 1,
+                    "image_url": "/brigadeiros/beijinho.webp"
+                },
+                {
+                    "id": "BCHPE1",
+                    "name": "Bicho de pé",
+                    "desc": "Brigadeiro de morango",
+                    "price": 1,
+                    "image_url": "/brigadeiros/bicho-de-pe.webp"
+                },
+                {
+                    "id": "POCA12",
+                    "name": "Paçoca",
+                    "desc": "Brigadeiro de paçoca coberto com paçoca",
+                    "price": 1.2,
+                    "image_url": "/brigadeiros/pacoca.webp"
+                },
+                {
+                    "id": "CHUR14",
+                    "name": "Churros",
+                    "desc": "Brigadeiro de doce de leite e canela coberto com açúcar e canela",
+                    "price": 1.5,
+                    "image_url": "/brigadeiros/churros.webp"
+                },
+                {
+                    "id": "MARA15",
+                    "name": "Maracujá",
+                    "desc": "Brigadeiro feito com polpa de maracujá coberto com granulado branco",
+                    "price": 1.5,
+                    "image_url": "/brigadeiros/maracuja.webp"
+                }
+            ]
+        },
+        {
+            "name": "Brownies",
+            "desc": "Diversas opções de brownies irresistíveis!",
+            "products": [
+                {
+                    "id": "TRADBR",
+                    "name": "Tradicional",
+                    "desc": "Pedaço de brownie irresistível",
+                    "price": 4,
+                    "image_url": "/brownies/tradicional.webp"
+                },
+                {
+                    "id": "AVELBR",
+                    "name": "Creme de Avelã",
+                    "desc": "Irresistível brownie recheado de creme de avelã",
+                    "price": 7,
+                    "image_url": "/brownies/creme-de-avela.webp"
+                },
+                {
+                    "id": "DOLEBR",
+                    "name": "Doce de Leite",
+                    "desc": "Irresistível brownie recheado com doce de leite cremoso",
+                    "price": 7,
+                    "image_url": "/brownies/doce-de-leite.webp"
+                },
+                {
+                    "id": "BRIGBR",
+                    "name": "Brigadeiro",
+                    "desc": "Irresistível brownie recheado com incrível brigadeiro",
+                    "price": 7,
+                    "image_url": "/brownies/brigadeiro.webp"
+                }
+            ]
+        },
+        {
+            "name": "Bolos de Pote",
+            "desc": "Feitos de forma totalmente artesanal, a cada colherada uma explosão de sabores!",
+            "products": [
+                {
+                    "id": "BRIGPT",
+                    "name": "Brigadeiro",
+                    "desc": "Bolo de pote com massa, brigadeiro e creme de chocolate",
+                    "price": 5,
+                    "image_url": "/bolos/brigadeiro.webp"
+                },
+                {
+                    "id": "NINHPT",
+                    "name": "Leite Ninho",
+                    "desc": "Bolo de pote com massa, brigadeiro e creme de Leite Ninho",
+                    "price": 5,
+                    "image_url": "/bolos/ninho.webp"
+                },
+                {
+                    "id": "CHMOPT",
+                    "name": "Chocolate com Morango",
+                    "desc": "Bolo de pote com massa e creme de chocolate, com pedaços de morango",
+                    "price": 5,
+                    "image_url": "/bolos/chocolate-morango.webp"
+                },
+                {
+                    "id": "NIMOPT",
+                    "name": "Leite Ninho com Morango",
+                    "desc": "Bolo de pote com massa e creme de Leite Ninho, com pedaços de morango",
+                    "price": 5,
+                    "image_url": "/bolos/ninho-morango.webp"
+                },
+                {
+                    "id": "NICHPT",
+                    "name": "Leite Ninho com Chocolate",
+                    "desc": "Bolo de pote com massa e creme de Leite Ninho e chocolate",
+                    "price": 5,
+                    "image_url": "/bolos/ninho-chocolate.webp"
+                }
+            ]
+        }
+    ]
 }
