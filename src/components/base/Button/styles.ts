@@ -8,7 +8,7 @@ export const ButtonWrapper = styled.button`
     border-right-width: 2px;
     border-bottom-width: 4px;
     border-left-width: 2px;
-    border-color: rgba(123, 52, 30, 1);
+    border-color: #1a202c;
     width: 100%;
     font-size: 1.25rem;
     color: rgba(26, 32, 44, 1);
@@ -24,9 +24,11 @@ export const ButtonWrapper = styled.button`
     @media (min-width: 768px) {
         width: auto;
         margin: 0;
-        padding-top: .5rem;
-        padding-bottom: .5rem;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+`;
+
+export const ButtonContainer = styled.div`
+    display: flex;
 `;

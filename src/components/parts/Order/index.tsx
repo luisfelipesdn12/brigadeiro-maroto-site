@@ -1,19 +1,8 @@
 import Section from "../../base/Section";
+import Button from "../../base/Button";
+import { ButtonContainer } from "../../base/Button/styles";
 import { Sentence } from "./styles";
-
-/*
-    <p class="mb-6 text-gray-900 text-left text-xl">
-        Quer <strong>pedidos maiores</strong>? Seu <strong>sabor não está disponível</strong>? Quer <strong>fazer uma festa</strong> com brigadeiros marotos?
-    </p>
-    <div class="flex">
-        <a id="pre-order-button" class="bg-orange-900 bg-opacity-25 text-center rounded-lg border-2 border-b-4 border-gray-900 w-full md:w-auto mx-auto md:m-0 text-xl text-gray-900 font-bold shadow py-3 md:py-2 md:px-6 uppercase" href="javascript:preOrder()">
-            <span class="select-none">
-                Faça uma encomenda!
-            </span>
-        </a>
-    </div>
-*/
-
+import { data } from "../../../../pages/_app";
 
 const Order: React.FC = () => {
     return(
@@ -26,6 +15,12 @@ const Order: React.FC = () => {
             <Sentence>
                 Quer <strong>pedidos maiores</strong>? Seu <strong>sabor não está disponível</strong>? Quer <strong>fazer uma festa</strong> com brigadeiros marotos?
             </Sentence>
+            <ButtonContainer>
+                <Button
+                    label="Faça uma encomenda!"
+                    handleClick={() => open(`https://wa.me/${data.contact.phone_number}/?text=${encodeURIComponent("Olá, Douglas! Eu vim pelo site e gostaria de fazer uma encomenda.")}`, "_blank")}
+                />
+            </ButtonContainer>
         </Section>
     )
 }
