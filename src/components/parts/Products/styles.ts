@@ -68,6 +68,10 @@ export const ProductPrice = styled.p`
 export const ProductDescription = styled.p`
     color: #4a5568;
     font-size: 1rem;
+
+    @media(min-width: 768px) {
+        min-height: 50px;
+    }
 `;
 
 export const ProductAvailability = styled.p`
@@ -79,4 +83,25 @@ export const Divisor = styled.hr`
     border-top-width: 1px;
     margin-left: .75rem;
     margin-right: .75rem;
+
+    // <hr class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
+    @media (min-width: 640px) {
+        grid-column-start: 2;
+        grid-column-end: 8;
+    }
+
+    @media (min-width: 1280px) {
+        grid-column-end: 6;
+    }
+`;
+
+export const DivisorContainer = styled.span`
+    @media (min-width: 640px) {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    @media (min-width: 1280px) {
+        grid-template-columns: repeat(6, 1fr);
+    }
 `;

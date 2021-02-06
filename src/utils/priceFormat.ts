@@ -7,4 +7,6 @@
  * @param price The price to ber formated.
  * @returns The formated price.
  */
-export const priceFormat = (price: number): string => "R$ " + price.toFixed(2);
+const priceFormat = (price: number): string => "R$ " + price.toFixed(2);
+
+export default priceFormat;

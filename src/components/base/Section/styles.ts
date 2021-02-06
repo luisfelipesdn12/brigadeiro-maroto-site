@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import { SectionProps } from ".";
 
+// // p-3 py-16 px-3
 export const SectionWrapper = styled.section<SectionProps>`
     background-color: ${props => props.bgColor};
     padding: ${props => props.padding};
-    padding-bottom: ${props => props.paddingBotton};
+    padding-top: ${props => props.paddingTop};
+    padding-bottom: ${props => props.paddingBottom};
+    padding-left: ${props => props.paddingLeft};
+    padding-right: ${props => props.paddingRight};
 
     background-image: url(${props => props.bgImageURL});
     background-size: 300px;

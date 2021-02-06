@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
 
     html {
         font-family: 'Glacial Indifference', 'Rubik', 'Open Sans', sans-serif;
+        line-height: 1.5;
     }
 
     body {
@@ -48,6 +49,12 @@ const GlobalStyle = createGlobalStyle`
     img {
         max-width: 100%;
         height: auto;
+    }
+
+    hr {
+        box-sizing: content-box;
+        height: 0;
+        overflow: visible;
     }
 `
 

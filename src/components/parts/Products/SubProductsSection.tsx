@@ -1,4 +1,4 @@
-import Section from "../../base/Section";
+import Section, { SectionProps } from "../../base/Section";
 import Title from "../../base/Title";
 import Description from "./Description";
 import Product, { ProductShape } from "./Product";
@@ -12,11 +12,17 @@ interface Section {
 
 interface SubProductsSectionProps {
     section: Section;
+    availability: { [key: string] : number };
 }
 
-const SubProductsSection: React.FC<SubProductsSectionProps> = ({ section }) => {
+const SubProductsSection: React.FC<SubProductsSectionProps> = ({ section, availability }) => {
     return (
-        <Section>
+        <Section
+            paddingTop="4rem"
+            paddingBottom="4rem"
+            paddingLeft=".75rem"
+            paddingRight=".75rem"
+        >
             <Title
                 content={`${section.name}:`}
                 color={"#744210"}
@@ -27,7 +33,12 @@ const SubProductsSection: React.FC<SubProductsSectionProps> = ({ section }) => {
             />
             <ProductList>
                 {section.products.map(p =>
-                    <Product key={p.id} product={p} />
+                    <Product
+                        product={p}
+                        availability={availability[p.id]}
+                        omitAvailability={section.name == "Bolos de Pote"}
+                        key={p.id}
+                    />
                 )}
             </ProductList>
         </Section>

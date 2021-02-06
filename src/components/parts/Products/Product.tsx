@@ -8,7 +8,8 @@ import {
     ProductAvailability,
     Divisor
 } from "./styles";
-import { priceFormat } from "../../../utils";
+import priceFormat from "../../../utils/priceFormat";
+import QuantityControl from "./QuantityControl";
 
 export interface ProductShape {
     id: string;
@@ -20,9 +21,25 @@ export interface ProductShape {
 
 interface ProductProps {
     product: ProductShape;
+    availability: number;
+    omitAvailability?: boolean;
 }
 
-const Product: React.FC<ProductProps> = ({ product }) => {
+const Product: React.FC<ProductProps> = ({ product, availability, omitAvailability }) => {
+    const showAvailability = () => {
+        if (omitAvailability) return;
+
+        return (
+            <ProductAvailability>
+                {
+                availability != 0 ?
+                `${availability} unidades disponíveis` :
+                "Sabor indisponível"
+                }
+            </ProductAvailability>
+        )
+    }
+
     return (
         <ProductWrapper>
             <ProductImage src={product.image_url} />
@@ -36,12 +53,10 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                 <ProductDescription>
                     {product.desc}
                 </ProductDescription>
-                <ProductAvailability>
-                    {"2 unidades disponíveis"}
-                </ProductAvailability>
+                {showAvailability()}
             </ProductInfo>
             <Divisor />
-            <h1>- 0 +</h1>
+            <QuantityControl/>
         </ProductWrapper>
     )
 }

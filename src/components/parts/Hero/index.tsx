@@ -7,7 +7,12 @@ import { data } from "../../../../pages/_app";
 
 const Hero: React.FC = () => {
     return (
-        <Section padding=".75rem" paddingBotton="5rem" bgColor="rgba(123, 52, 30, 0.5)" bgImageURL="/cacos.webp" >
+        <Section
+            padding=".75rem"
+            paddingBottom="5rem"
+            bgColor="rgba(123, 52, 30, 0.5)"
+            bgImageURL="/cacos.webp"
+        >
             <Logo />
             <Title
                 content={data.name}
