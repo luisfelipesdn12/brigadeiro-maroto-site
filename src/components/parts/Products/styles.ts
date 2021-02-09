@@ -23,6 +23,7 @@ export const ProductList = styled.ul`
     padding: 0;
     padding-inline: 0;
     justify-content: space-between;
+    list-style: none;
 
     @media (min-width: 768px) {
         display: flex;

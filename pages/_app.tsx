@@ -46,6 +46,28 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
     }
 
+    ol, ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    [type="checkbox"], [type="radio"] {
+        box-sizing: border-box;
+        padding: 0px;
+    }
+
+    button, input, optgroup, select, textarea {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: 1.15;
+        margin: 0px;
+    }
+
+    button, input {
+        overflow: visible;
+    }
+
     img {
         max-width: 100%;
         height: auto;

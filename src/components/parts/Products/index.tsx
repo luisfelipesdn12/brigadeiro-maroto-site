@@ -4,7 +4,11 @@ import { data } from "../../../../pages/_app";
 import { Divisor, DivisorContainer } from "./styles";
 import getAvailability from "../../../utils/getAvailability";
 
-const Products: React.FC = () => {
+interface ProductsProps {
+    order: { [productID: string]: number };
+}
+
+const Products: React.FC<ProductsProps> = ({ order }) => {
     const [availability, setAvailability] = useState({});
 
     const updateAvailability = async () => {

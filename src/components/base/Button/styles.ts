@@ -21,6 +21,11 @@ export const ButtonWrapper = styled.button`
     margin-left: auto;
     margin-right: auto;
 
+    :disabled {
+        opacity: 0.75;
+        cursor: not-allowed;
+    }
+
     @media (min-width: 768px) {
         width: auto;
         margin: 0;

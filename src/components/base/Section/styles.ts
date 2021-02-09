@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { SectionProps } from ".";
 
-// // p-3 py-16 px-3
 export const SectionWrapper = styled.section<SectionProps>`
     background-color: ${props => props.bgColor};
     padding: ${props => props.padding};
@@ -9,6 +8,7 @@ export const SectionWrapper = styled.section<SectionProps>`
     padding-bottom: ${props => props.paddingBottom};
     padding-left: ${props => props.paddingLeft};
     padding-right: ${props => props.paddingRight};
+    text-align: ${props => props.textAlign};
 
     background-image: url(${props => props.bgImageURL});
     background-size: 300px;
@@ -29,7 +29,6 @@ SectionWrapper.defaultProps = {
     padding: ".75rem",
 }
 
-// mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6
 export const DivWrapper = styled.div`
     margin-left: 16px;
     margin-right: 16px;

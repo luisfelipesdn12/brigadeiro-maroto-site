@@ -4,7 +4,7 @@ import { ButtonContainer } from "../../base/Button/styles";
 import { Sentence } from "./styles";
 import { data } from "../../../../pages/_app";
 
-const Order: React.FC = () => {
+const PreOrder: React.FC = () => {
     return(
         <Section
             paddingTop="4rem"
@@ -25,4 +25,4 @@ const Order: React.FC = () => {
     )
 }
 
-export default Order;
+export default PreOrder;

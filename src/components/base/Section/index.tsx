@@ -8,6 +8,7 @@ export interface SectionProps {
     paddingBottom?: string,
     paddingLeft?: string,
     paddingRight?: string,
+    textAlign?: string,
 }
 
 const Section: React.FC<SectionProps> = ({ children, ...stylingProps }) => {
