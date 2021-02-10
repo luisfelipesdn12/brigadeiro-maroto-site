@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import SubProductsSection from "./SubProductsSection";
 import { data } from "../../../../pages/_app";
 import { Divisor, DivisorContainer } from "./styles";
@@ -6,9 +6,12 @@ import getAvailability from "../../../utils/getAvailability";
 
 interface ProductsProps {
     order: { [productID: string]: number };
+    setOrder: Dispatch<SetStateAction<{
+        [productID: string]: number;
+    }>>;
 }
 
-const Products: React.FC<ProductsProps> = ({ order }) => {
+const Products: React.FC<ProductsProps> = ({ order, setOrder }) => {
     const [availability, setAvailability] = useState({});
 
     const updateAvailability = async () => {
@@ -28,6 +31,8 @@ const Products: React.FC<ProductsProps> = ({ order }) => {
                     <SubProductsSection
                         section={section}
                         availability={availability}
+                        order={order}
+                        setOrder={setOrder}
                         key={"SubProductsSection"+section.desc}
                     />
                     <DivisorContainer key={"DivisorContainer"+section.desc}>

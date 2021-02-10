@@ -3,27 +3,28 @@ import PreOrder from "../src/components/parts/PreOrder";
 import Products from "../src/components/parts/Products";
 import FinishOrder from "../src/components/parts/FinishOrder";
 import { useState } from "react";
-import { ProductShape } from "../src/components/parts/Products/Product";
-import { data } from "./_app";
 import CreditsFooter from "../src/components/parts/CreditsFooter";
+import getProducts from "../src/utils/getProducts";
 
-const products: ProductShape[] = (() => {
-    const products: ProductShape[] = [];
-
-    data.products_sections.map(section =>
-        products.push(...section.products));
-
-    return products;
-})();
+const products = getProducts();
 
 const Home: React.FC = () => {
-    const [order, setOrder] = useState<{ [productID: string]: number }>({});
+    const [order, setOrder] = useState<{ [productID: string]: number }>((() => {
+        const order: { [productID: string]: number } = {};
+
+        products.map(p => {
+            order[p.id] = 0;
+        });
+
+        return order;
+    })());
 
     return (
         <>
             <Hero/>
             <Products
                 order={order}
+                setOrder={setOrder}
             />
             <PreOrder/>
             <FinishOrder

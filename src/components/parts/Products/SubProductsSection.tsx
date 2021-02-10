@@ -1,4 +1,5 @@
-import Section, { SectionProps } from "../../base/Section";
+import { Dispatch, SetStateAction } from "react";
+import Section from "../../base/Section";
 import Title from "../../base/Title";
 import Description from "./Description";
 import Product, { ProductShape } from "./Product";
@@ -13,9 +14,13 @@ interface Section {
 interface SubProductsSectionProps {
     section: Section;
     availability: { [key: string] : number };
+    order: { [productID: string]: number };
+    setOrder: Dispatch<SetStateAction<{
+        [productID: string]: number;
+    }>>;
 }
 
-const SubProductsSection: React.FC<SubProductsSectionProps> = ({ section, availability }) => {
+const SubProductsSection: React.FC<SubProductsSectionProps> = ({ section, availability, order, setOrder }) => {
     return (
         <Section
             paddingTop="4rem"
@@ -36,6 +41,8 @@ const SubProductsSection: React.FC<SubProductsSectionProps> = ({ section, availa
                     <Product
                         product={p}
                         availability={availability[p.id]}
+                        order={order}
+                        setOrder={setOrder}
                         omitAvailability={section.name == "Bolos de Pote"}
                         key={p.id}
                     />

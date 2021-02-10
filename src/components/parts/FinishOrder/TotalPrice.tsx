@@ -13,11 +13,10 @@ const TotalPrice: React.FC<TotalPriceProps> = ({ products, order, includeShippin
     const getFinalValue = (): number => {
         let finalValue: number = 0;
 
-        for (let productID of Object.keys(order)) {
-            finalValue += (
-                order[productID]
-                * products.find(p => p.id === productID).price
-            );
+        for (let product of products) {
+            if (Object.prototype.hasOwnProperty.call(order, product.id)) {
+                finalValue += order[product.id] * product.price;
+            }
         }
 
         if (includeShipping) finalValue += 2;

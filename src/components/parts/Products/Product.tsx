@@ -10,6 +10,7 @@ import {
 } from "./styles";
 import priceFormat from "../../../utils/priceFormat";
 import QuantityControl from "./QuantityControl";
+import { Dispatch, SetStateAction } from "react";
 
 export interface ProductShape {
     id: string;
@@ -22,10 +23,14 @@ export interface ProductShape {
 interface ProductProps {
     product: ProductShape;
     availability: number;
+    order: { [productID: string]: number };
+    setOrder: Dispatch<SetStateAction<{
+        [productID: string]: number;
+    }>>;
     omitAvailability?: boolean;
 }
 
-const Product: React.FC<ProductProps> = ({ product, availability, omitAvailability }) => {
+const Product: React.FC<ProductProps> = ({ product, availability, order, setOrder, omitAvailability }) => {
     const showAvailability = () => {
         if (omitAvailability) return;
 
@@ -56,7 +61,11 @@ const Product: React.FC<ProductProps> = ({ product, availability, omitAvailabili
                 {showAvailability()}
             </ProductInfo>
             <Divisor />
-            <QuantityControl/>
+            <QuantityControl
+                productID={product.id}
+                order={order}
+                setOrder={setOrder}
+            />
         </ProductWrapper>
     )
 }
