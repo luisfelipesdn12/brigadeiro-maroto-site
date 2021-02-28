@@ -1,4 +1,8 @@
-import styled from "styled-components";
+import { useContext } from 'react';
+import styled from 'styled-components';
+import OrderContext from '../store/OrderContext';
+
+import Form from "../components/Form";
 
 const Title = styled.h1`
     font-size: 50px;
@@ -6,7 +10,14 @@ const Title = styled.h1`
 `;
 
 const Home: React.FC = () => {
-    return <Title>My page</Title>;
+    const [order, setOrder] = useContext(OrderContext);
+
+    return (
+        <>
+            <Title>{order.dummyValue}</Title>
+            <Form />
+        </>
+    )
 }
 
 export default Home;
