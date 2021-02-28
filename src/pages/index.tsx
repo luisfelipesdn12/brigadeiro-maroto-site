@@ -14,7 +14,7 @@ const Home: React.FC = () => {
 
     return (
         <>
-            <Title>{order.dummyValue}</Title>
+            <Title>{order.brownietOrder.getQuantityOrdered("BROW1")}</Title>
             <Form />
         </>
     )

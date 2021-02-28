@@ -1,0 +1,24 @@
+product_types:
+    kit:
+        name: Kists de brigadeiro
+        description: Deliciosos kits
+        products:
+            - id: KIT1
+              name: Kit basicokit basico de chocolate
+              price: 12
+    cake:
+        name: Bolos de Pote
+        description: Deliciosos bolos de pote
+        products:
+            - id: BOLO1
+              name: Bolo de chocolate
+              description: DEscrição do bolo de chocolate
+              price: 5
+    brownie:
+        name: Brownies
+        descriptions: Deliciosos Brownies
+        products:
+            - id: BROW1
+              name: Brownie Tradicional
+              description: DEscrição do brownie tradicional
+              price: 4

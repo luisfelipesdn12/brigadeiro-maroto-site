@@ -9,9 +9,9 @@ export default function Form() {
         <input
             placeholder={"yay"}
             onChange={(e) => {
-                order.setDummy(e.currentTarget.value);
+                order.brownietOrder.updateProductQuantity("BROW1", e.currentTarget?.value?.length);
 
-                const newOrder = new Order()
+                const newOrder = new Order();
                 Object.assign(newOrder, order);
 
                 setOrder(newOrder);

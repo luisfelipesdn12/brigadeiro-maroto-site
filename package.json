@@ -9,6 +9,7 @@
     "lint:fix": "yarn prettier --write --ignore-unknown ./src/**"
   },
   "dependencies": {
+    "js-yaml-loader": "^1.2.2",
     "next": "latest",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
