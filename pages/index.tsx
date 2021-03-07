@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import OrderContext from '../store/OrderContext';
+import OrderContext from '../src/store/OrderContext';
 
-import Form from "../components/Form";
+import CreditsFooter from '../src/components/parts/CreditsFooter';
+import Hero from '../src/components/parts/Hero';
+import Products from '../src/components/parts/Products';
 
 const Title = styled.h1`
     font-size: 50px;
@@ -14,8 +16,9 @@ const Home: React.FC = () => {
 
     return (
         <>
-            <Title>{order.brownietOrder.getQuantityOrdered("BROW1")}</Title>
-            <Form />
+            <Hero />
+            <Products />
+            <CreditsFooter />
         </>
     )
 }

@@ -9,7 +9,7 @@ export default function Form() {
         <input
             placeholder={"yay"}
             onChange={(e) => {
-                order.brownietOrder.updateProductQuantity("BROW1", e.currentTarget?.value?.length);
+                order.brownieOrder.updateProductQuantity("BROW1", e.currentTarget?.value?.length);
 
                 const newOrder = new Order();
                 Object.assign(newOrder, order);

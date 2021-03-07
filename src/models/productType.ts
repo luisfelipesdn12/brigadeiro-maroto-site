@@ -1,7 +1,9 @@
-import product from './product';
+import Product from './Product';
 
-export default interface productType {
+export default interface ProductType {
+    id: string;
     name: string;
     description: string;
-    products: product[];
+    only_pre_ordering?: boolean;
+    products: Product[];
 }

@@ -1,7 +1,7 @@
-import productType from "../models/productType";
+import ProductType from "../models/ProductType";
 
 export default class SimpleOrder {
-    readonly productTypeInfo: productType;
+    readonly productTypeInfo: ProductType;
     private quantityOrdered: { [productID: string]: number } = {};
 
     public updateProductQuantity(productID: string, newQuantity: number): void {
@@ -12,7 +12,7 @@ export default class SimpleOrder {
         return this.quantityOrdered[productID];
     }
 
-    constructor(productTypeInfo: productType) {
+    constructor(productTypeInfo: ProductType) {
         this.productTypeInfo = productTypeInfo;
 
         for (const product of this.productTypeInfo.products) {

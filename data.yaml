@@ -1,6 +1,28 @@
+name: Brigadeiro Maroto
+about: Está a fim de comer deliciosos brigadeiros? Veja nosso cardápio e saiba como fazer seu pedido!
+slogan: Distribuindo Felicidade!
+image_url: "/cacos.webp"
+
+contact:
+    phone_number: "+55 11 98947-6716"
+
+social:
+    instagram:
+        url: https://instagram.com/briga_deiromaroto
+        image_url: "/instagram.webp"
+    tiktok:
+        url: https://www.tiktok.com/@brigadeiromaroto
+        image_url: "/tiktok.webp"
+
+website:
+    url: https://brigadeiromaroto.now.sh/
+    favicon: "/brigadeiro.png"
+    banner_url: https://raw.githubusercontent.com/luisfelipesdn12/brigadeiro-maroto-site/master/assets/banner.png
+
 product_types:
     kit:
-        name: Kists de brigadeiro
+        id: KITS01
+        name: Kits de brigadeiro
         description: Deliciosos kits
         products:
             - id: KIT1
@@ -8,8 +30,10 @@ product_types:
               price: 12
 
     cake:
+        id: CAKE02
         name: Bolos de Pote
         description: Deliciosos bolos de pote
+        only_pre_ordering: true
         products:
             - id: BRIGPT
               name: Brigadeiro
@@ -38,8 +62,9 @@ product_types:
               image_url: "/bolos/ninho-chocolate.webp"
 
     brownie:
+        id: BROW03
         name: Brownies
-        descriptions: Diversas opções de brownies irresistíveis!
+        description: Diversas opções de brownies irresistíveis!
         products:
             - id: TRADBR
               name: Tradicional
