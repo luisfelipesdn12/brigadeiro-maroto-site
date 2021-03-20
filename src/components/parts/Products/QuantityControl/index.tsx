@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import ProductType from "../../../../models/ProductType";
-import Order from "../../../../Order";
+import Order from "../../../../models/Order";
 import OrderContext from '../../../../store/OrderContext';
 import {
     QuantityControlWrapper,

@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import Order from "../Order";
+import Order from "../models/Order";
 import OrderContext from "../store/OrderContext"
 
 export default function Form() {

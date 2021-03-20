@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useState } from "react"
-import Order from "../Order";
+import Order from "../models/Order";
 
 export enum PossibleActions {
     SET_DUMMY = "setDummy"
