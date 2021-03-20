@@ -28,7 +28,7 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ productID, productTyp
 
     const productTypeOrder = (() => {
         switch (productType.id) {
-            // case "KITS01": return "kitOrder";
+            case "KITS01": return "kitOrder";
             case "CAKE02": return "cakeOrder";
             case "BROW03": return "brownieOrder";
         }
@@ -60,15 +60,33 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ productID, productTyp
         setOrder(newOrder);
     }
 
+    const noticeToRemoveOnFinishOrder = (): void => {
+        throw new Error("noticeToRemoveOnFinishOrder");
+    }
+
     return (
         <>
             <QuantityControlWrapper>
                 <ClickableControl
-                    onClick={handleSub}
+                    onClick={
+                        productType.id === "KITS01"
+                        ? noticeToRemoveOnFinishOrder
+                        : handleSub
+                    }
                 >-</ClickableControl>
                     <QuantityDisplay>{quantity}</QuantityDisplay>
                 <ClickableControl
-                    onClick={handleAdd}
+                    onClick={
+                        productType.id === "KITS01"
+                        ? () => {
+                            order.kitOrder.addNewBrigadeiroOrder(productID);
+                            const newOrder = new Order();
+                            Object.assign(newOrder, order);
+
+                            setOrder(newOrder);
+                        }
+                        : handleAdd
+                    }
                 >+</ClickableControl>
             </QuantityControlWrapper>
         </>

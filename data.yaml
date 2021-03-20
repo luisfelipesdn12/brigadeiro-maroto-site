@@ -23,16 +23,31 @@ product_types:
     kit:
         id: KITS01
         name: Kits de brigadeiro
-        description: Deliciosos kits
+        description: Monte seus kits com doversas opções irresistíveis!
         products:
-            - id: KIT1
-              name: Kit basicokit basico de chocolate
-              price: 12
+            - id: KIT804
+              name: Kit 04 brigadeiros
+              description: Kit com 04 brigadeiros de sua preferência
+              quantity_on_kit: 4
+              price: 8
+              image_url: "/kits/4.jpeg"
+            - id: KIT116
+              name: Kit 06 brigadeiros
+              description: Kit com 06 brigadeiros de sua preferência
+              quantity_on_kit: 6
+              price: 11
+              image_url: "/kits/6.jpeg"
+            - id: KIT812
+              name: Kit 12 brigadeiros
+              description: Kit com 12 brigadeiros de sua preferência
+              quantity_on_kit: 12
+              price: 20
+              image_url: "/kits/12.jpeg"
 
     cake:
         id: CAKE02
         name: Bolos de Pote
-        description: Deliciosos bolos de pote
+        description: Feitos de forma totalmente artesanal, a cada colherada uma explosão de sabores!
         only_pre_ordering: true
         products:
             - id: BRIGPT

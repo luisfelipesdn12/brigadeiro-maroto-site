@@ -60,7 +60,10 @@ const Product: React.FC<ProductProps> = ({ product, productType }) => {
                 <ProductDescription>
                     {product.description}
                 </ProductDescription>
-                {showAvailability()}
+                {
+                    productType.id === "KITS01"
+                    ? null : showAvailability()
+                }
             </ProductInfo>
             <Divisor />
             <QuantityControl

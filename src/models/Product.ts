@@ -3,5 +3,6 @@ export default interface Product {
     name: string;
     description: string;
     image_url: string;
+    quantity_on_kit?: number;
     price: number;
 }

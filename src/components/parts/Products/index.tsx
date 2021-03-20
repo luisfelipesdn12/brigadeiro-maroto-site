@@ -6,6 +6,12 @@ const Products: React.FC = () => {
     return (
         <>
             <SubProductsSection
+                productType={data.product_types.kit}
+            />
+            <DivisorContainer>
+                <Divisor/>
+            </DivisorContainer>
+            <SubProductsSection
                 productType={data.product_types.brownie}
             />
             <DivisorContainer>
