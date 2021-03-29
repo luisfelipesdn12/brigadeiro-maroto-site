@@ -12,8 +12,8 @@ export const SocialListWrapper = styled.ul`
 export const SocialItemWrapper = styled.li`
     width: 3rem;
     height: 3rem;
-    padding: .25rem;
-    margin: .5rem;
+    padding: 0.25rem;
+    margin: 0.5rem;
     border-radius: 9999px;
     background-color: white;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);

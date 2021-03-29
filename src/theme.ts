@@ -1,7 +1,7 @@
 interface ThemeProps {
     colors: {
         primary: string;
-    }
+    };
 }
 
 const theme: ThemeProps = {

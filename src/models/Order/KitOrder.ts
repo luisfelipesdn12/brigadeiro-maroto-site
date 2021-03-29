@@ -6,7 +6,10 @@ export default class KitOrder {
     readonly productTypeInfo: ProductType;
     private quantityOrdered: { [productID: string]: BrigadeiroOrder[] } = {};
 
-    public updateBrigadeirosOrdered(productID: string, newBrigadeiroOrders: BrigadeiroOrder[]) {
+    public updateBrigadeirosOrdered(
+        productID: string,
+        newBrigadeiroOrders: BrigadeiroOrder[]
+    ) {
         this.quantityOrdered[productID] = newBrigadeiroOrders;
     }
 
@@ -19,13 +22,19 @@ export default class KitOrder {
     }
 
     public addNewBrigadeiroOrder(productID: string): void {
-        const maxQuantityForThisKit = this.productTypeInfo.products
-            .find(product => product.id === productID)?.quantity_on_kit;
+        const maxQuantityForThisKit = this.productTypeInfo.products.find(
+            (product) => product.id === productID
+        )?.quantity_on_kit;
 
-        this.quantityOrdered[productID]?.push(new BrigadeiroOrder(maxQuantityForThisKit));
+        this.quantityOrdered[productID]?.push(
+            new BrigadeiroOrder(maxQuantityForThisKit)
+        );
     }
 
-    public updateProductQuantity(_productID: string, _newQuantity: number): void {
+    public updateProductQuantity(
+        _productID: string,
+        _newQuantity: number
+    ): void {
         throw new Error("Not a valid method for kitOrder");
     }
 

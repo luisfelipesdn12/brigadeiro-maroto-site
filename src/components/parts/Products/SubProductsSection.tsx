@@ -9,7 +9,9 @@ interface SubProductsSectionProps {
     productType: ProductType;
 }
 
-const SubProductsSection: React.FC<SubProductsSectionProps> = ({ productType }) => {
+const SubProductsSection: React.FC<SubProductsSectionProps> = ({
+    productType,
+}) => {
     return (
         <Section
             paddingTop="4rem"
@@ -22,20 +24,14 @@ const SubProductsSection: React.FC<SubProductsSectionProps> = ({ productType }) 
                 color={"#744210"}
                 textAlign={"left"}
             />
-            <Description
-                content={productType.description}
-            />
+            <Description content={productType.description} />
             <ProductList>
-                {productType.products.map(p =>
-                    <Product
-                        product={p}
-                        productType={productType}
-                        key={p.id}
-                    />
-                )}
+                {productType.products.map((p) => (
+                    <Product product={p} productType={productType} key={p.id} />
+                ))}
             </ProductList>
         </Section>
-    )
-}
+    );
+};
 
 export default SubProductsSection;

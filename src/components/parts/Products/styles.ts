@@ -4,9 +4,9 @@ import { DescriptionProps } from "./Description";
 interface DescriptionWrapperProps extends Omit<DescriptionProps, "content"> {}
 
 export const DescriptionWrapper = styled.p<DescriptionWrapperProps>`
-    color: ${ props => props.color };
-    margin-top: ${ props => props.marginTop };
-    margin-bottom: ${ props => props.marginBottom };
+    color: ${(props) => props.color};
+    margin-top: ${(props) => props.marginTop};
+    margin-bottom: ${(props) => props.marginBottom};
     margin: 0;
     text-align: left;
     font-size: 1.5rem;
@@ -14,7 +14,7 @@ export const DescriptionWrapper = styled.p<DescriptionWrapperProps>`
 
 DescriptionWrapper.defaultProps = {
     color: "#4a5568",
-}
+};
 
 export const ProductList = styled.ul`
     margin: 0;
@@ -33,11 +33,11 @@ export const ProductList = styled.ul`
 
 export const ProductWrapper = styled.li`
     max-width: 24rem;
-    border-radius: .75rem;
+    border-radius: 0.75rem;
     overflow: hidden;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
     margin: 0;
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
     background-color: white;
 `;
 
@@ -63,14 +63,14 @@ export const ProductPrice = styled.p`
     color: #1a202c;
     font-weight: 600;
     font-size: 1.125rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 `;
 
 export const ProductDescription = styled.p`
     color: #4a5568;
     font-size: 1rem;
 
-    @media(min-width: 768px) {
+    @media (min-width: 768px) {
         min-height: 50px;
     }
 `;
@@ -82,8 +82,8 @@ export const ProductAvailability = styled.p`
 
 export const Divisor = styled.hr`
     border-top-width: 1px;
-    margin-left: .75rem;
-    margin-right: .75rem;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
 
     // <hr class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
     @media (min-width: 640px) {

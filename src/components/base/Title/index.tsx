@@ -10,9 +10,7 @@ export interface TitleProps {
 }
 
 const Title: React.FC<TitleProps> = ({ content, ...stylingProps }) => {
-    return (
-        <TitleWrapper {...stylingProps}>{content}</TitleWrapper>
-    )
-}
+    return <TitleWrapper {...stylingProps}>{content}</TitleWrapper>;
+};
 
 export default Title;

@@ -1,30 +1,24 @@
 import SubProductsSection from "./SubProductsSection";
-import data from '../../../data';
+import data from "../../../data";
 import { Divisor, DivisorContainer } from "./styles";
 
 const Products: React.FC = () => {
     return (
         <>
-            <SubProductsSection
-                productType={data.product_types.kit}
-            />
+            <SubProductsSection productType={data.product_types.kit} />
             <DivisorContainer>
-                <Divisor/>
+                <Divisor />
             </DivisorContainer>
-            <SubProductsSection
-                productType={data.product_types.brownie}
-            />
+            <SubProductsSection productType={data.product_types.brownie} />
             <DivisorContainer>
-                <Divisor/>
+                <Divisor />
             </DivisorContainer>
-            <SubProductsSection
-                productType={data.product_types.cake}
-            />
+            <SubProductsSection productType={data.product_types.cake} />
             <DivisorContainer>
-                <Divisor/>
+                <Divisor />
             </DivisorContainer>
         </>
-    )
-}
+    );
+};
 
 export default Products;

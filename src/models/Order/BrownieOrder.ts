@@ -1,4 +1,4 @@
-import data from '../../data';
+import data from "../../data";
 import SimpleOrder from "./SimpleOrder";
 
 const browniwTypeInfo = data.product_types.brownie;

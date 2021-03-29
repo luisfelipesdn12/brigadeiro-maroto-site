@@ -11,10 +11,17 @@ const CreditsFooter: React.FC = () => {
             paddingRight=".75rem"
         >
             <CreditsText>
-                Desenvolvido por <CreditsLink href="https://luisfelipesdn12.now.sh/" target="_blank">Luis Felipe</CreditsLink>.
+                Desenvolvido por{" "}
+                <CreditsLink
+                    href="https://luisfelipesdn12.now.sh/"
+                    target="_blank"
+                >
+                    Luis Felipe
+                </CreditsLink>
+                .
             </CreditsText>
         </Section>
-    )
-}
+    );
+};
 
 export default CreditsFooter;

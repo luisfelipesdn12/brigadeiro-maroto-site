@@ -8,22 +8,28 @@ const Finish: React.FC = () => {
 
     return (
         <Section>
-            {data.product_types.brownie.products.map(brownie => {
-                const quantity = order.brownieOrder.getQuantityOrdered(brownie.id);
+            {data.product_types.brownie.products.map((brownie) => {
+                const quantity = order.brownieOrder.getQuantityOrdered(
+                    brownie.id
+                );
 
                 return quantity > 0 ? (
-                    <h2>{quantity} un. {brownie.name}</h2>
+                    <h2>
+                        {quantity} un. {brownie.name}
+                    </h2>
                 ) : null;
             })}
-            {data.product_types.cake.products.map(cake => {
+            {data.product_types.cake.products.map((cake) => {
                 const quantity = order.cakeOrder.getQuantityOrdered(cake.id);
 
                 return quantity > 0 ? (
-                    <h2>{quantity} un. {cake.name}</h2>
+                    <h2>
+                        {quantity} un. {cake.name}
+                    </h2>
                 ) : null;
             })}
         </Section>
-    )
-}
+    );
+};
 
 export default Finish;

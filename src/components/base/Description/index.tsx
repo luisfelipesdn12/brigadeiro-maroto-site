@@ -9,10 +9,11 @@ export interface DescriptionProps {
     textAlign?: string;
 }
 
-const Description: React.FC<DescriptionProps> = ({ content, ...stylingProps }) => {
-    return (
-        <DescriptionWrapper {...stylingProps}>{content}</DescriptionWrapper>
-    )
-}
+const Description: React.FC<DescriptionProps> = ({
+    content,
+    ...stylingProps
+}) => {
+    return <DescriptionWrapper {...stylingProps}>{content}</DescriptionWrapper>;
+};
 
 export default Description;

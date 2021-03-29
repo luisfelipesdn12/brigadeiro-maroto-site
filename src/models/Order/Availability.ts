@@ -3,7 +3,7 @@ const PAGE: number = 1;
 const URL: string = `https://spreadsheets.google.com/feeds/cells/${SHEET_ID}/${PAGE}/public/full?alt=json`;
 
 export default class Availability {
-    private quantity: { [productID: string] : number } = {};
+    private quantity: { [productID: string]: number } = {};
 
     getAvailabilityByID(productID: string): number {
         return this.quantity[productID];
@@ -11,12 +11,12 @@ export default class Availability {
 
     private fetchQuantity() {
         fetch(URL)
-            .then(response => {
+            .then((response) => {
                 if (!response.ok) throw new Error("Response is not OK");
 
                 return response.json();
             })
-            .then(data => {
+            .then((data) => {
                 const rows = {};
                 const entries = data.feed.entry;
 
@@ -32,7 +32,7 @@ export default class Availability {
 
                 return rows;
             })
-            .then(rows => {
+            .then((rows) => {
                 const IDs = rows["1"];
                 const quantities = rows["3"];
 
@@ -43,7 +43,7 @@ export default class Availability {
             .then(() => {
                 console.log("YYAYAY:", this.quantity);
             })
-            .catch(error => {
+            .catch((error) => {
                 throw error;
             });
     }

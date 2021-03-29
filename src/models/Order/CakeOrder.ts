@@ -1,4 +1,4 @@
-import data from '../../data';
+import data from "../../data";
 import SimpleOrder from "./SimpleOrder";
 
 const cakeTypeInfo = data.product_types.cake;

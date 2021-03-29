@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import ProductType from "../../../../models/ProductType";
 import Order from "../../../../models/Order";
-import OrderContext from '../../../../store/OrderContext';
+import OrderContext from "../../../../store/OrderContext";
 import {
     QuantityControlWrapper,
     ClickableControl,
-    QuantityDisplay
+    QuantityDisplay,
 } from "./styles";
 
 interface QuantityControlProps {
@@ -13,7 +13,10 @@ interface QuantityControlProps {
     productType: ProductType;
 }
 
-const QuantityControl: React.FC<QuantityControlProps> = ({ productID, productType }) => {
+const QuantityControl: React.FC<QuantityControlProps> = ({
+    productID,
+    productType,
+}) => {
     const [order, setOrder] = useContext(OrderContext);
     const [availability, setAvailability] = useState<number>(0);
 
@@ -28,9 +31,12 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ productID, productTyp
 
     const productTypeOrder = (() => {
         switch (productType.id) {
-            case "KITS01": return "kitOrder";
-            case "CAKE02": return "cakeOrder";
-            case "BROW03": return "brownieOrder";
+            case "KITS01":
+                return "kitOrder";
+            case "CAKE02":
+                return "cakeOrder";
+            case "BROW03":
+                return "brownieOrder";
         }
     })();
 
@@ -45,7 +51,7 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ productID, productTyp
         Object.assign(newOrder, order);
 
         setOrder(newOrder);
-    }
+    };
 
     const handleAdd = (): void => {
         let newQuantity = quantity + 1;
@@ -58,11 +64,11 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ productID, productTyp
         Object.assign(newOrder, order);
 
         setOrder(newOrder);
-    }
+    };
 
     const noticeToRemoveOnFinishOrder = (): void => {
         throw new Error("noticeToRemoveOnFinishOrder");
-    }
+    };
 
     return (
         <>
@@ -70,27 +76,33 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ productID, productTyp
                 <ClickableControl
                     onClick={
                         productType.id === "KITS01"
-                        ? noticeToRemoveOnFinishOrder
-                        : handleSub
+                            ? noticeToRemoveOnFinishOrder
+                            : handleSub
                     }
-                >-</ClickableControl>
-                    <QuantityDisplay>{quantity}</QuantityDisplay>
+                >
+                    -
+                </ClickableControl>
+                <QuantityDisplay>{quantity}</QuantityDisplay>
                 <ClickableControl
                     onClick={
                         productType.id === "KITS01"
-                        ? () => {
-                            order.kitOrder.addNewBrigadeiroOrder(productID);
-                            const newOrder = new Order();
-                            Object.assign(newOrder, order);
+                            ? () => {
+                                  order.kitOrder.addNewBrigadeiroOrder(
+                                      productID
+                                  );
+                                  const newOrder = new Order();
+                                  Object.assign(newOrder, order);
 
-                            setOrder(newOrder);
-                        }
-                        : handleAdd
+                                  setOrder(newOrder);
+                              }
+                            : handleAdd
                     }
-                >+</ClickableControl>
+                >
+                    +
+                </ClickableControl>
             </QuantityControlWrapper>
         </>
-    )
-}
+    );
+};
 
 export default QuantityControl;

@@ -6,14 +6,21 @@ interface ButtonProps {
     isDisabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, handleClick, isDisabled,  ...stylingProps }) => {
+const Button: React.FC<ButtonProps> = ({
+    label,
+    handleClick,
+    isDisabled,
+    ...stylingProps
+}) => {
     return (
         <ButtonWrapper
             onClick={handleClick}
             disabled={isDisabled}
             {...stylingProps}
-        >{label}</ButtonWrapper>
-    )
-}
+        >
+            {label}
+        </ButtonWrapper>
+    );
+};
 
 export default Button;

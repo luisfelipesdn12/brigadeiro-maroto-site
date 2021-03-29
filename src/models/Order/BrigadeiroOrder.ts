@@ -8,10 +8,18 @@ export default class BrigadeiroOrder {
         return this.quantityOrdered[brigadeiroID];
     }
 
-    public updateProductQuantity(brigadeiroID: string, newQuantity: number): void {
+    public updateProductQuantity(
+        brigadeiroID: string,
+        newQuantity: number
+    ): void {
         let totalQuantity = 0;
         for (const productID in this.quantityOrdered) {
-            if (Object.prototype.hasOwnProperty.call(this.quantityOrdered, productID)) {
+            if (
+                Object.prototype.hasOwnProperty.call(
+                    this.quantityOrdered,
+                    productID
+                )
+            ) {
                 if (productID === brigadeiroID) {
                     totalQuantity += newQuantity;
                 } else {
@@ -27,7 +35,6 @@ export default class BrigadeiroOrder {
         } else {
             this.quantityOrdered[brigadeiroID] = newQuantity;
         }
-
     }
 
     constructor(maxQuantity: number) {

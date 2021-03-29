@@ -8,9 +8,7 @@ export interface SloganProps {
 }
 
 const Slogan: React.FC<SloganProps> = ({ content, ...stylingProps }) => {
-    return (
-        <SloganWrapper {...stylingProps}>{content}</SloganWrapper>
-    )
-}
+    return <SloganWrapper {...stylingProps}>{content}</SloganWrapper>;
+};
 
 export default Slogan;

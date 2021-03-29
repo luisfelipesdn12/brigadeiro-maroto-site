@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ButtonWrapper = styled.button`
     background-color: rgba(123, 52, 30, 0.25);
     text-align: center;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     border-top-width: 2px;
     border-right-width: 2px;
     border-bottom-width: 4px;
@@ -15,8 +15,8 @@ export const ButtonWrapper = styled.button`
     cursor: pointer;
     font-weight: 700;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
-    padding-top: .75rem;
-    padding-bottom: .75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
     text-transform: uppercase;
     margin-left: auto;
     margin-right: auto;

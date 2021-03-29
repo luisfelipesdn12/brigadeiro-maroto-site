@@ -13,11 +13,15 @@ interface SocialItemProps {
 const SocialItem: React.FC<SocialItemProps> = ({ name, socialNetwork }) => {
     return (
         <SocialItemWrapper>
-            <a href={socialNetwork.url} target="_blank" rel="noopener noreferrer">
+            <a
+                href={socialNetwork.url}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <img src={socialNetwork.image_url} alt={`${name} logo`} />
             </a>
         </SocialItemWrapper>
-    )
-}
+    );
+};
 
 export default SocialItem;

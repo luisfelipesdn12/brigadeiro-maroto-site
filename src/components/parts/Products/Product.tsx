@@ -7,7 +7,7 @@ import {
     ProductPrice,
     ProductDescription,
     ProductAvailability,
-    Divisor
+    Divisor,
 } from "./styles";
 import priceFormat from "../../../utils/priceFormat";
 import QuantityControl from "./QuantityControl";
@@ -38,40 +38,26 @@ const Product: React.FC<ProductProps> = ({ product, productType }) => {
 
         return (
             <ProductAvailability>
-                {
-                availability != 0 ?
-                `${availability} unidades disponíveis` :
-                "Sabor indisponível"
-                }
+                {availability != 0
+                    ? `${availability} unidades disponíveis`
+                    : "Sabor indisponível"}
             </ProductAvailability>
-        )
-    }
+        );
+    };
 
     return (
         <ProductWrapper>
             <ProductImage src={product.image_url} />
             <ProductInfo>
-                <ProductName>
-                    {product.name}
-                </ProductName>
-                <ProductPrice>
-                    {priceFormat(product.price)}
-                </ProductPrice>
-                <ProductDescription>
-                    {product.description}
-                </ProductDescription>
-                {
-                    productType.id === "KITS01"
-                    ? null : showAvailability()
-                }
+                <ProductName>{product.name}</ProductName>
+                <ProductPrice>{priceFormat(product.price)}</ProductPrice>
+                <ProductDescription>{product.description}</ProductDescription>
+                {productType.id === "KITS01" ? null : showAvailability()}
             </ProductInfo>
             <Divisor />
-            <QuantityControl
-                productID={product.id}
-                productType={productType}
-            />
+            <QuantityControl productID={product.id} productType={productType} />
         </ProductWrapper>
-    )
-}
+    );
+};
 
 export default Product;

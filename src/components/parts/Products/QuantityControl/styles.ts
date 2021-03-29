@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const QuantityControlWrapper = styled.div`
-    font-family: 'Rubik', 'Glacial Indifference', 'Open Sans', sans-serif;
+    font-family: "Rubik", "Glacial Indifference", "Open Sans", sans-serif;
     display: flex;
     justify-content: space-between;
     color: #1a202c;
@@ -20,13 +20,13 @@ export const ClickableControl = styled.span`
     user-select: none;
 
     border-radius: 9999px;
-    padding-left: .5rem;
-    padding-right: .5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 
     :hover {
         background-color: #edf2f7;
     }
-    `;
+`;
 
 export const QuantityDisplay = styled.span`
     -webkit-user-select: none;

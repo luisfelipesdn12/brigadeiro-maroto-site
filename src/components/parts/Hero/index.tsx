@@ -20,16 +20,11 @@ const Hero: React.FC = () => {
                 marginTop="1.5rem"
                 marginBottom=".25rem"
             />
-            <Slogan
-                content={data.slogan}
-                color="#2d3748"
-            />
-            <SocialList
-                socialNetworks={data.social}
-            />
+            <Slogan content={data.slogan} color="#2d3748" />
+            <SocialList socialNetworks={data.social} />
         </Section>
-    )
-}
+    );
+};
 
 export default Hero;
 

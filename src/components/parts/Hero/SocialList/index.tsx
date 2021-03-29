@@ -8,11 +8,15 @@ interface SocialListProps {
 const SocialList: React.FC<SocialListProps> = ({ socialNetworks }) => {
     return (
         <SocialListWrapper>
-            {Object.keys(socialNetworks).map(name =>
-                <SocialItem key={name} name={name} socialNetwork={socialNetworks[name]} />
-            )}
+            {Object.keys(socialNetworks).map((name) => (
+                <SocialItem
+                    key={name}
+                    name={name}
+                    socialNetwork={socialNetworks[name]}
+                />
+            ))}
         </SocialListWrapper>
-    )
-}
+    );
+};
 
 export default SocialList;
