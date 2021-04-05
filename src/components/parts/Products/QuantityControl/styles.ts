@@ -3,9 +3,10 @@ import styled from "styled-components";
 export const QuantityControlWrapper = styled.div`
     font-family: "Glacial Indifference", "Open Sans", sans-serif;
     display: flex;
-    justify-content: ${props => props?.style?.justifyContent || "space-between"};
+    justify-content: ${(props) =>
+        props?.style?.justifyContent || "space-between"};
     color: #1a202c;
-    font-weight: ${props => props?.style?.fontWeight || 600};
+    font-weight: ${(props) => props?.style?.fontWeight || 600};
     font-size: 1.125rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;

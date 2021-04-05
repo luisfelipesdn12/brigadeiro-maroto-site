@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BrigadeiroOptionWrapper = styled.div`
     display: flex;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     height: max-content;
 `;
 
@@ -22,5 +22,5 @@ export const BrigadeiroName = styled.h1`
 `;
 
 export const BrigadeiroDescription = styled.p`
-    font-size: .9rem;
+    font-size: 0.9rem;
 `;

@@ -7,16 +7,20 @@ const KitQuantityControl: React.FC = () => {
 
     return (
         <>
-            <BrigadeiroSelector display={V}/>
-            <QuantityControlWrapper style={{ justifyContent: "center", fontWeight: 300 }}>
-                <ClickableControl onClick={() => {
-                    setV(!V);
-                }}>
+            <BrigadeiroSelector display={V} />
+            <QuantityControlWrapper
+                style={{ justifyContent: "center", fontWeight: 300 }}
+            >
+                <ClickableControl
+                    onClick={() => {
+                        setV(!V);
+                    }}
+                >
                     + Adicionar um kit
                 </ClickableControl>
             </QuantityControlWrapper>
         </>
     );
-}
+};
 
 export default KitQuantityControl;

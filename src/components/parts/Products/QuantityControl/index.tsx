@@ -68,22 +68,14 @@ const QuantityControl: React.FC<QuantityControlProps> = ({
     };
 
     if (productType.id === "KITS01") {
-        return <KitQuantityControl/>;
+        return <KitQuantityControl />;
     } else {
         return (
             <>
                 <QuantityControlWrapper>
-                    <ClickableControl
-                        onClick={handleSub}
-                    >
-                        -
-                    </ClickableControl>
+                    <ClickableControl onClick={handleSub}>-</ClickableControl>
                     <QuantityDisplay>{quantity}</QuantityDisplay>
-                    <ClickableControl
-                        onClick={handleAdd}
-                    >
-                        +
-                    </ClickableControl>
+                    <ClickableControl onClick={handleAdd}>+</ClickableControl>
                 </QuantityControlWrapper>
             </>
         );

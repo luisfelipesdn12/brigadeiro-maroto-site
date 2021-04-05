@@ -4,7 +4,7 @@ import {
     BrigadeiroPicture,
     BrigadeiroName,
     BrigadeiroInformation,
-    BrigadeiroDescription
+    BrigadeiroDescription,
 } from "./styles";
 
 const BrigadeiroOption: React.FC<{
@@ -12,19 +12,15 @@ const BrigadeiroOption: React.FC<{
 }> = ({ brigadeiro }) => {
     return (
         <BrigadeiroOptionWrapper>
-            <BrigadeiroPicture
-                src={brigadeiro.image_url}
-            />
+            <BrigadeiroPicture src={brigadeiro.image_url} />
             <BrigadeiroInformation>
-                <BrigadeiroName>
-                    {brigadeiro.name}
-                </BrigadeiroName>
+                <BrigadeiroName>{brigadeiro.name}</BrigadeiroName>
                 <BrigadeiroDescription>
                     {brigadeiro.description}
                 </BrigadeiroDescription>
             </BrigadeiroInformation>
         </BrigadeiroOptionWrapper>
     );
-}
+};
 
 export default BrigadeiroOption;
