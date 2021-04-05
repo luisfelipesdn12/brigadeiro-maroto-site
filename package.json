@@ -9,9 +9,11 @@
     "lint:fix": "yarn prettier --write --ignore-unknown ./src/**"
   },
   "dependencies": {
+    "@types/react-collapse": "^5.0.0",
     "js-yaml-loader": "^1.2.2",
     "next": "latest",
     "react": "^16.8.0",
+    "react-collapse": "^5.1.0",
     "react-dom": "^16.8.0",
     "react-is": "^16.8.0",
     "styled-components": "^5.0.0"

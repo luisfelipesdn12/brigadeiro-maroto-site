@@ -81,6 +81,10 @@ const GlobalStyle = createGlobalStyle`
         height: 0;
         overflow: visible;
     }
+
+    .ReactCollapse--collapse {
+        transition: height 500ms;
+    }
 `;
 
 const App = ({ Component, pageProps }) => {
