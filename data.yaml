@@ -106,28 +106,28 @@ brigadeiros:
     - id: CLASS1
       name: Clássico
       description: Brigadeiro Tradicional
-      image_url: "../assets/brigadeiros/tradicional.webp"
+      image_url: "/brigadeiros/tradicional.webp"
     - id: NINU15
       name: Ninho com Nuttela
       description: Brigadeiro de leite em pó recheado com Nutella
-      image_url: "../assets/brigadeiros/ninho-nuttela.webp"
+      image_url: "/brigadeiros/ninho-nuttela.webp"
     - id: BEIJI1
       name: Beijinho
       description: Brigadeiro de coco
-      image_url: "../assets/brigadeiros/beijinho.webp"
+      image_url: "/brigadeiros/beijinho.webp"
     - id: BCHPE1
       name: Bicho de pé
       description: Brigadeiro de morango
-      image_url: "../assets/brigadeiros/bicho-de-pe.webp"
+      image_url: "/brigadeiros/bicho-de-pe.webp"
     - id: POCA12
       name: Paçoca
       description: Brigadeiro de paçoca coberto com paçoca
-      image_url: "../assets/brigadeiros/pacoca.webp"
+      image_url: "/brigadeiros/pacoca.webp"
     - id: CHUR14
       name: Churros
       description: Brigadeiro de doce de leite e canela coberto com açúcar e canela
-      image_url: "../assets/brigadeiros/churros.webp"
+      image_url: "/brigadeiros/churros.webp"
     - id: MARA15
       name: Maracujá
       description: Brigadeiro feito com polpa de maracujá coberto com granulado branco
-      image_url: "../assets/brigadeiros/maracuja.webp"
+      image_url: "/brigadeiros/maracuja.webp"
