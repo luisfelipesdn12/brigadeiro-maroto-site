@@ -7,6 +7,7 @@ import {
     ClickableControl,
     QuantityDisplay,
 } from "./styles";
+import KitQuantityControl from "./KitQuantityControl";
 
 interface QuantityControlProps {
     productID: string;
@@ -66,43 +67,27 @@ const QuantityControl: React.FC<QuantityControlProps> = ({
         setOrder(newOrder);
     };
 
-    const noticeToRemoveOnFinishOrder = (): void => {
-        throw new Error("noticeToRemoveOnFinishOrder");
-    };
-
-    return (
-        <>
-            <QuantityControlWrapper>
-                <ClickableControl
-                    onClick={
-                        productType.id === "KITS01"
-                            ? noticeToRemoveOnFinishOrder
-                            : handleSub
-                    }
-                >
-                    -
-                </ClickableControl>
-                <QuantityDisplay>{quantity}</QuantityDisplay>
-                <ClickableControl
-                    onClick={
-                        productType.id === "KITS01"
-                            ? () => {
-                                  order.kitOrder.addNewBrigadeiroOrder(
-                                      productID
-                                  );
-                                  const newOrder = new Order();
-                                  Object.assign(newOrder, order);
-
-                                  setOrder(newOrder);
-                              }
-                            : handleAdd
-                    }
-                >
-                    +
-                </ClickableControl>
-            </QuantityControlWrapper>
-        </>
-    );
+    if (productType.id === "KITS01") {
+        return <KitQuantityControl/>;
+    } else {
+        return (
+            <>
+                <QuantityControlWrapper>
+                    <ClickableControl
+                        onClick={handleSub}
+                    >
+                        -
+                    </ClickableControl>
+                    <QuantityDisplay>{quantity}</QuantityDisplay>
+                    <ClickableControl
+                        onClick={handleAdd}
+                    >
+                        +
+                    </ClickableControl>
+                </QuantityControlWrapper>
+            </>
+        );
+    }
 };
 
 export default QuantityControl;
