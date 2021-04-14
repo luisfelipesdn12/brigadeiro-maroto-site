@@ -1,10 +1,12 @@
 import Product from "../../../../../models/Product";
+import BrigadeiroQuantityControl from "./BrigadeiroQuantityControl";
 import {
     BrigadeiroOptionWrapper,
     BrigadeiroPicture,
     BrigadeiroName,
     BrigadeiroInformation,
     BrigadeiroDescription,
+    BrigadeiroInformationAndControl,
 } from "./styles";
 
 const BrigadeiroOption: React.FC<{
@@ -13,12 +15,15 @@ const BrigadeiroOption: React.FC<{
     return (
         <BrigadeiroOptionWrapper>
             <BrigadeiroPicture src={brigadeiro.image_url} />
-            <BrigadeiroInformation>
-                <BrigadeiroName>{brigadeiro.name}</BrigadeiroName>
-                <BrigadeiroDescription>
-                    {brigadeiro.description}
-                </BrigadeiroDescription>
-            </BrigadeiroInformation>
+            <BrigadeiroInformationAndControl>
+                <BrigadeiroInformation>
+                    <BrigadeiroName>{brigadeiro.name}</BrigadeiroName>
+                    <BrigadeiroDescription>
+                        {brigadeiro.description}
+                    </BrigadeiroDescription>
+                </BrigadeiroInformation>
+                <BrigadeiroQuantityControl />
+            </BrigadeiroInformationAndControl>
         </BrigadeiroOptionWrapper>
     );
 };

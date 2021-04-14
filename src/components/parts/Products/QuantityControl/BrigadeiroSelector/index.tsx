@@ -7,7 +7,12 @@ const BrigadeiroSelector: React.FC<{ display: boolean }> = ({ display }) => {
     return (
         <Collapse isOpened={display}>
             {data.brigadeiros.map((brigadeiro) => {
-                return <BrigadeiroOption brigadeiro={brigadeiro} />;
+                return (
+                    <BrigadeiroOption
+                        brigadeiro={brigadeiro}
+                        key={brigadeiro.id}
+                    />
+                );
             })}
             <Divisor />
         </Collapse>

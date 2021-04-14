@@ -24,6 +24,9 @@ export const ClickableControl = styled.span`
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 
+    vertical-align: middle;
+    text-align: center;
+
     :hover {
         background-color: #edf2f7;
     }

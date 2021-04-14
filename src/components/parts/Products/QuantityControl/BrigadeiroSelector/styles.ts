@@ -24,3 +24,13 @@ export const BrigadeiroName = styled.h1`
 export const BrigadeiroDescription = styled.p`
     font-size: 0.9rem;
 `;
+
+export const BrigadeiroQuantityControlWrapper = styled.div`
+    width: max-content;
+`;
+
+export const BrigadeiroInformationAndControl = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+`;
