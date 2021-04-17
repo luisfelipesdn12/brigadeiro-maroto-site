@@ -68,7 +68,7 @@ const QuantityControl: React.FC<QuantityControlProps> = ({
     };
 
     if (productType.id === "KITS01") {
-        return <KitQuantityControl />;
+        return <KitQuantityControl productID={productID} />;
     } else {
         return (
             <>

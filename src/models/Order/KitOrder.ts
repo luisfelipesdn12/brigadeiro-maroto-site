@@ -31,11 +31,23 @@ export default class KitOrder {
         );
     }
 
-    public updateProductQuantity(
-        _productID: string,
-        _newQuantity: number
-    ): void {
-        throw new Error("Not a valid method for kitOrder");
+    public cancelLastBrigadeiroOrder(productID: string): void {
+        this.quantityOrdered[productID].pop();
+    }
+
+    public isLastBrigadeiroOrderFull(productID: string, defaultReturn: boolean = true): boolean {
+        const lastBrigadeiroOrder: BrigadeiroOrder = this.quantityOrdered[productID][
+            this.quantityOrdered[productID].length - 1
+        ];
+
+        if (lastBrigadeiroOrder) {
+            return (
+                lastBrigadeiroOrder.getTotalQuantityOrdered() ===
+                lastBrigadeiroOrder.maxQuantity
+            );
+        } else {
+            return defaultReturn;
+        }
     }
 
     constructor() {

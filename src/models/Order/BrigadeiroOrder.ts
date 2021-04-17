@@ -1,11 +1,29 @@
 import data from "../../data";
 
+export class MaximumQuantityBeated extends Error {}
+
 export default class BrigadeiroOrder {
     private quantityOrdered: { [productID: string]: number } = {};
     maxQuantity: number;
 
     public getQuantityOrdered(brigadeiroID: string): number {
         return this.quantityOrdered[brigadeiroID];
+    }
+
+    public getTotalQuantityOrdered(): number {
+        let totalQuantity = 0;
+        for (const productID in this.quantityOrdered) {
+            if (
+                Object.prototype.hasOwnProperty.call(
+                    this.quantityOrdered,
+                    productID
+                )
+            ) {
+                totalQuantity += this.getQuantityOrdered(productID);
+            }
+        }
+
+        return totalQuantity;
     }
 
     public updateProductQuantity(
@@ -29,7 +47,7 @@ export default class BrigadeiroOrder {
         }
 
         if (totalQuantity > this.maxQuantity) {
-            throw new Error(
+            throw new MaximumQuantityBeated(
                 `Cannot update product (${brigadeiroID}) quantity, because it would make the total quantity of products ${totalQuantity}, but the maximus is ${this.maxQuantity}`
             );
         } else {

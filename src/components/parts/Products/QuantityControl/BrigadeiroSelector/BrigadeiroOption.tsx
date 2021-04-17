@@ -9,9 +9,15 @@ import {
     BrigadeiroInformationAndControl,
 } from "./styles";
 
-const BrigadeiroOption: React.FC<{
+interface BrigadeiroOptionProps {
+    kitID: string;
     brigadeiro: Product;
-}> = ({ brigadeiro }) => {
+}
+
+const BrigadeiroOption: React.FC<BrigadeiroOptionProps> = ({
+    kitID,
+    brigadeiro,
+}) => {
     return (
         <BrigadeiroOptionWrapper>
             <BrigadeiroPicture src={brigadeiro.image_url} />
@@ -22,7 +28,10 @@ const BrigadeiroOption: React.FC<{
                         {brigadeiro.description}
                     </BrigadeiroDescription>
                 </BrigadeiroInformation>
-                <BrigadeiroQuantityControl />
+                <BrigadeiroQuantityControl
+                    kitID={kitID}
+                    brigadeiroID={brigadeiro.id}
+                />
             </BrigadeiroInformationAndControl>
         </BrigadeiroOptionWrapper>
     );

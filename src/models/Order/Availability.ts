@@ -40,9 +40,6 @@ export default class Availability {
                     this.quantity[IDs[i]] = quantities[i];
                 }
             })
-            .then(() => {
-                console.log("YYAYAY:", this.quantity);
-            })
             .catch((error) => {
                 throw error;
             });
