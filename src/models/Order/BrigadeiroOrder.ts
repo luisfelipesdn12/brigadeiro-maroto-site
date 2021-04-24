@@ -3,7 +3,7 @@ import data from "../../data";
 export class MaximumQuantityBeated extends Error {}
 
 export default class BrigadeiroOrder {
-    private quantityOrdered: { [productID: string]: number } = {};
+    readonly quantityOrdered: { [productID: string]: number } = {};
     maxQuantity: number;
 
     public getQuantityOrdered(brigadeiroID: string): number {

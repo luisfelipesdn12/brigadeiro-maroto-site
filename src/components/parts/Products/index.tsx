@@ -5,18 +5,19 @@ import { Divisor, DivisorContainer } from "./styles";
 const Products: React.FC = () => {
     return (
         <>
-            <SubProductsSection productType={data.product_types.kit} />
-            <DivisorContainer>
-                <Divisor />
-            </DivisorContainer>
-            <SubProductsSection productType={data.product_types.brownie} />
-            <DivisorContainer>
-                <Divisor />
-            </DivisorContainer>
-            <SubProductsSection productType={data.product_types.cake} />
-            <DivisorContainer>
-                <Divisor />
-            </DivisorContainer>
+            {Object.values(data.product_types).map(productType => {
+                return (
+                    <>
+                        <SubProductsSection
+                            productType={productType}
+                            key={productType.id}
+                        />
+                        <DivisorContainer>
+                            <Divisor />
+                        </DivisorContainer>
+                    </>
+                );
+            })}
         </>
     );
 };

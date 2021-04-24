@@ -14,6 +14,7 @@ import QuantityControl from "./QuantityControl";
 import ProductShape from "../../../models/Product";
 import OrderContext from "../../../store/OrderContext";
 import ProductType from "../../../models/ProductType";
+import BrigadeirosOnKitDisplay from "./BrigadeirosOnKitDisplay";
 
 interface ProductProps {
     product: ProductShape;
@@ -53,6 +54,11 @@ const Product: React.FC<ProductProps> = ({ product, productType }) => {
                 <ProductPrice>{priceFormat(product.price)}</ProductPrice>
                 <ProductDescription>{product.description}</ProductDescription>
                 {productType.id === "KITS01" ? null : showAvailability()}
+                {productType.id === "KITS01"
+                ? <BrigadeirosOnKitDisplay
+                        productID={product.id}
+                    />
+                : null}
             </ProductInfo>
             <Divisor />
             <QuantityControl productID={product.id} productType={productType} />

@@ -32,8 +32,6 @@ const QuantityControl: React.FC<QuantityControlProps> = ({
 
     const productTypeOrder = (() => {
         switch (productType.id) {
-            case "KITS01":
-                return "kitOrder";
             case "CAKE02":
                 return "cakeOrder";
             case "BROW03":
@@ -41,7 +39,9 @@ const QuantityControl: React.FC<QuantityControlProps> = ({
         }
     })();
 
-    const quantity = order[productTypeOrder].getQuantityOrdered(productID);
+    const quantity = productTypeOrder
+                    ? order[productTypeOrder].getQuantityOrdered(productID)
+                    : order.kitOrder.getQuantityOrdered(productID);
 
     const handleSub = (): void => {
         let newQuantity = quantity - 1;
