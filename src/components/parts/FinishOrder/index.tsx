@@ -5,6 +5,7 @@ import { ButtonContainer } from "../../base/Button/styles";
 import Description from "../../base/Description";
 import Section from "../../base/Section";
 import Title from "../../base/Title";
+import FinalWishList from "./FinalWishList";
 import ShippingOption from "./ShippingOption";
 import TotalPrice from "./TotalPrice";
 
@@ -46,10 +47,7 @@ const FinishOrder: React.FC = () => {
             <Description
                 content="Clique para adicionar ou remover sabores e envie seu pedido automaticamente pelo WhatsApp!"
             />
-            {/* <FinalWishList
-                products={products}
-                order={order}
-            /> */}
+            <FinalWishList />
             <ShippingOption
                 handleChange={(_e) => setIncludeShipping(!includeShipping)}
             />
