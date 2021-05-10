@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import data from "../../../data";
 import Order from "../../../models/Order";
+import KitOrder from "../../../models/Order/KitOrder";
 import OrderContext from "../../../store/OrderContext";
 import priceFormat from "../../../utils/priceFormat";
 import returnCleanNumber from "../../../utils/returnCleanNumber";
@@ -20,19 +21,54 @@ const FinishOrder: React.FC = () => {
         let hasOrders: boolean = false;
         let message: string = "Olá, Douglas! Eu vim pelo site e gostaria de fazer um pedido.\n";
 
+        // For each kind of order:
         for (const productOrder of [order.kitOrder, order.brownieOrder, order.cakeOrder]) {
             let totalOrderedForThisProductType: number = 0;
-            let productTypeMessageSection: string = `\n${productOrder.productTypeInfo.name}\n`
 
+            /**
+             * The section of the message who
+             * stores the information about
+             * the current product type.
+             *
+             * Starts with the product type name
+             * and may or not be included on the
+             * final message dependent if there
+             * are orders for some product of the type.
+             */
+            let productTypeMessageSection: string = `\n*${productOrder.productTypeInfo.name}*\n`
+
+            // For each product of this product type:
             for (const product of productOrder.productTypeInfo.products) {
                 const quantityOrdered = productOrder.getQuantityOrdered(product.id);
                 totalOrderedForThisProductType += quantityOrdered;
 
                 if (quantityOrdered > 0) {
                     productTypeMessageSection += `${quantityOrdered} un. ${product.name}\n`;
+
+                    if (productOrder instanceof KitOrder) {
+                        // TODO: Abstract this to an util
+                        const brigadeiroOrdersFromThisKit = productOrder.getBrigadeirosOrdered(product.id);
+
+                        for (let i = 0; i < brigadeiroOrdersFromThisKit.length; i++) {
+                            const brigadeiroOrder = brigadeiroOrdersFromThisKit[i];
+                            productTypeMessageSection += `\t\t- Kit ${i+1}:\n`;
+
+                            for (const brigadeiro of data.brigadeiros) {
+                                const brigadeiroQuantityOrdered = brigadeiroOrder.getQuantityOrdered(brigadeiro.id);
+
+                                if (brigadeiroQuantityOrdered > 0) {
+                                    productTypeMessageSection += `\t\t\t\t${brigadeiroQuantityOrdered} un. Brigadeiro ${brigadeiro.name}\n`;
+                                }
+                            }
+
+                            productTypeMessageSection += `\n`;
+                        }
+                    }
                 }
             }
 
+            // Only if the product type has orders
+            // append it to the inal message.
             if (totalOrderedForThisProductType > 0) {
                 message += productTypeMessageSection;
                 hasOrders = true;
@@ -47,7 +83,9 @@ const FinishOrder: React.FC = () => {
             message += `\nTotal: ${priceFormat(order.getTotalPrice())}`;
         }
 
-        return encodeURI(`https://wa.me/${returnCleanNumber(data.contact.phone_number)}/?text=` + message);;
+        return encodeURI(
+            `https://wa.me/${returnCleanNumber(data.contact.phone_number)}/?text=` + message
+        );
     }
 
     const sendButtonIsDisabled = (): boolean => {
