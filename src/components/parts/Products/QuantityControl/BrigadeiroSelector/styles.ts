@@ -27,6 +27,16 @@ export const BrigadeiroDescription = styled.p`
 
 export const BrigadeiroQuantityControlWrapper = styled.div`
     width: max-content;
+    display: flex;
+
+    justify-content: center;
+
+    border: 1px solid #e2e8f080;
+    border-radius: 9999px;
+
+    padding: 0 0.1rem;
+
+    max-height: 2rem;
 `;
 
 export const BrigadeiroInformationAndControl = styled.div`

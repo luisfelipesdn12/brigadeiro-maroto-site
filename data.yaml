@@ -5,7 +5,8 @@ shipping_price: 2
 image_url: "/cacos.webp"
 
 contact:
-    phone_number: "+55 11 99001-2896"
+    # phone_number: "+55 11 99001-2896"
+    phone_number: "+55 11 95884-3078"
 
 social:
     instagram:

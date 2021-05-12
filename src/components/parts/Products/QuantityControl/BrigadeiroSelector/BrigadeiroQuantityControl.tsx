@@ -16,17 +16,39 @@ const BrigadeiroQuantityControl: React.FC<BrigadeiroQuantityControlProps> = ({
 }) => {
     const [order, setOrder] = useContext(OrderContext);
 
-    const addBrigadeiro = () => {
+    const removeBrigadeiro = () => {
         const newBrigadeiroOrders = order.kitOrder.getBrigadeirosOrdered(kitID);
 
         const brigadeiroQuantity = newBrigadeiroOrders[
             newBrigadeiroOrders.length - 1
         ].getQuantityOrdered(brigadeiroID);
 
+        newBrigadeiroOrders[
+            newBrigadeiroOrders.length - 1
+        ].updateProductQuantity(
+            brigadeiroID,
+            (brigadeiroQuantity - 1 >= 0 ? brigadeiroQuantity - 1 : 0),
+        );
+
+        order.kitOrder.updateBrigadeirosOrdered(kitID, newBrigadeiroOrders);
+
+        const newOrder = new Order();
+        Object.assign(newOrder, order);
+
+        setOrder(newOrder);
+    };
+
+    const addBrigadeiro = () => {
+        const newBrigadeiroOrders = order.kitOrder.getBrigadeirosOrdered(kitID);
+
+        const brigadeiroQuantity = newBrigadeiroOrders[
+            newBrigadeiroOrders.length - 1
+        ]?.getQuantityOrdered(brigadeiroID);
+
         try {
             newBrigadeiroOrders[
                 newBrigadeiroOrders.length - 1
-            ].updateProductQuantity(brigadeiroID, brigadeiroQuantity + 1);
+            ]?.updateProductQuantity(brigadeiroID, brigadeiroQuantity + 1);
         } catch (error) {
             if (error instanceof MaximumQuantityBeated) {
                 newBrigadeiroOrders[
@@ -47,7 +69,16 @@ const BrigadeiroQuantityControl: React.FC<BrigadeiroQuantityControlProps> = ({
 
     return (
         <BrigadeiroQuantityControlWrapper>
-            <p>
+            <ClickableControl
+                onClick={removeBrigadeiro}
+                style={{
+                    fontSize: "1.25rem",
+                    fontWeight: "bold",
+                }}
+            >
+                -
+            </ClickableControl>
+            <p style={{ alignSelf: "center", margin: "0 0.75rem" }}>
                 {order.kitOrder
                     .getBrigadeirosOrdered(kitID)
                     [

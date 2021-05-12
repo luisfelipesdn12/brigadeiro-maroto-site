@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { DescriptionProps } from "./Description";
+import { ClickableControl } from "./QuantityControl/styles";
 
 interface DescriptionWrapperProps extends Omit<DescriptionProps, "content"> {}
 
@@ -69,10 +70,6 @@ export const ProductPrice = styled.p`
 export const ProductDescription = styled.p`
     color: #4a5568;
     font-size: 1rem;
-
-    @media (min-width: 768px) {
-        min-height: 50px;
-    }
 `;
 
 export const ProductAvailability = styled.p`
@@ -108,7 +105,10 @@ export const DivisorContainer = styled.span`
 
 export const KitOrderContainer = styled.div`
     display: flex;
-    padding: 1rem 0;
+    padding-top: 1rem;
+
+    justify-content: space-between;
+    width: -webkit-fill-available;
 `;
 
 export const KitOrderTitle = styled.p`
@@ -122,5 +122,39 @@ export const KitOrderTitle = styled.p`
 export const BrigadeirosEnumeration = styled(ProductDescription)`
     @media (min-width: 768px) {
         min-height: 0;
+    }
+`;
+
+export const DeleteIconSVG = styled.svg`
+    width: 2rem;
+    height: 2rem;
+
+    cursor: pointer;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    vertical-align: middle;
+    text-align: center;
+    align-self: center;
+
+    padding: 0.45rem;
+    border-radius: 9999px;
+
+    background-color: #edf2f750;
+    :hover {
+        background-color: #edf2f7;
+    }
+
+    path {
+        fill: #ef4444;
+    }
+`;
+
+export const RemoveConfirmationButton = styled(ClickableControl)`
+    color: #ef4444;
+    background-color: #ef444410;
+    :hover {
+        background-color: #ef444430;
     }
 `;

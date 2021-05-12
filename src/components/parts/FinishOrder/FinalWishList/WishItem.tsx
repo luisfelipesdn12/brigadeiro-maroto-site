@@ -16,7 +16,12 @@ interface WishItemProps {
 
 const WishItem: React.FC<WishItemProps> = ({ product, quantityOrdered }) => {
     return (
-        <WishItemWrapper>
+        <WishItemWrapper
+            onClick={() => {
+                document.getElementById(`Product-${product.id}`)
+                    .scrollIntoView({behavior: 'smooth'});
+            }}
+        >
             <WishItemImage
                 src={product.image_url}
             />

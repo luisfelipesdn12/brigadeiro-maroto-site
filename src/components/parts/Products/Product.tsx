@@ -47,7 +47,7 @@ const Product: React.FC<ProductProps> = ({ product, productType }) => {
     };
 
     return (
-        <ProductWrapper>
+        <ProductWrapper id={`Product-${product.id}`}>
             <ProductImage src={product.image_url} />
             <ProductInfo>
                 <ProductName>{product.name}</ProductName>

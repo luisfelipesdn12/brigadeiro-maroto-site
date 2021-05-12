@@ -14,16 +14,22 @@ const BrigadeiroSelector: React.FC<BrigadeiroSelectorProps> = ({
 }) => {
     return (
         <Collapse isOpened={display}>
-            {data.brigadeiros.map((brigadeiro) => {
-                return (
-                    <BrigadeiroOption
-                        kitID={kitID}
-                        brigadeiro={brigadeiro}
-                        key={brigadeiro.id}
-                    />
-                );
-            })}
-            <Divisor />
+            <div style={{ padding: "1rem 0" }}>
+                {data.brigadeiros.map((brigadeiro, index) => {
+                    return (
+                        <>
+                            {index !== 0 ? (
+                                <Divisor style={{ opacity: "0.5" }} />
+                            ) : null}
+                            <BrigadeiroOption
+                                kitID={kitID}
+                                brigadeiro={brigadeiro}
+                                key={brigadeiro.id}
+                            />
+                        </>
+                    );
+                })}
+            </div>
         </Collapse>
     );
 };

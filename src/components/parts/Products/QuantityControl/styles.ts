@@ -26,7 +26,9 @@ export const ClickableControl = styled.span`
 
     vertical-align: middle;
     text-align: center;
+    align-self: center;
 
+    background-color: #edf2f750;
     :hover {
         background-color: #edf2f7;
     }
