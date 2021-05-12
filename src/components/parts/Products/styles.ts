@@ -85,7 +85,6 @@ export const Divisor = styled.hr`
     margin-left: 0.75rem;
     margin-right: 0.75rem;
 
-    // <hr class="mx-4 sm:col-start-2 sm:col-end-8 xl:col-end-6">
     @media (min-width: 640px) {
         grid-column-start: 2;
         grid-column-end: 8;
@@ -104,5 +103,24 @@ export const DivisorContainer = styled.span`
 
     @media (min-width: 1280px) {
         grid-template-columns: repeat(6, 1fr);
+    }
+`;
+
+export const KitOrderContainer = styled.div`
+    display: flex;
+    padding: 1rem 0;
+`;
+
+export const KitOrderTitle = styled.p`
+    color: #1a202c;
+    font-weight: 600;
+    text-align: left;
+    min-width: fit-content;
+    margin-right: 0.5rem;
+`;
+
+export const BrigadeirosEnumeration = styled(ProductDescription)`
+    @media (min-width: 768px) {
+        min-height: 0;
     }
 `;
