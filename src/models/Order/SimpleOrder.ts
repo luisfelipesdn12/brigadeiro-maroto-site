@@ -12,6 +12,21 @@ export default class SimpleOrder {
         return this.quantityOrdered[productID];
     }
 
+    /**
+     * Generates a description of the order with
+     * identificators and quantities.
+     *
+     * @param productID The ID of the project
+     * @returns The decrition to be inserted on message.
+     */
+    public getMessageDescription(productID: string): string {
+        const quantity = this.getQuantityOrdered(productID);
+        const name = this.productTypeInfo.products
+            .find(product => product.id == productID)?.name;
+
+        return `${quantity} un. ${name}\n`;
+    }
+
     constructor(productTypeInfo: ProductType) {
         this.productTypeInfo = productTypeInfo;
 

@@ -17,6 +17,45 @@ export default class KitOrder {
         return this.quantityOrdered[productID];
     }
 
+    /**
+     * Generates a description of the order with
+     * identificators and quantities.
+     *
+     * In the case of a kit, describe also the
+     * brigadeiros chosen.
+     *
+     * @param productID The ID of the project
+     * @returns The decrition to be inserted on message.
+     */
+    public getMessageDescription(productID: string): string {
+        let result = "";
+
+        const quantity = this.getQuantityOrdered(productID);
+        const name = this.productTypeInfo.products
+            .find(product => product.id == productID)?.name;
+
+        const brigadeiroOrdersFromThisKit = this.getBrigadeirosOrdered(productID);
+
+        result += `${quantity} un. ${name}\n`;
+
+        for (let i = 0; i < brigadeiroOrdersFromThisKit.length; i++) {
+            const brigadeiroOrder = brigadeiroOrdersFromThisKit[i];
+            result += `\t\t- Kit ${i + 1}:\n`;
+
+            for (const brigadeiro of data.brigadeiros) {
+                const brigadeiroQuantityOrdered = brigadeiroOrder.getQuantityOrdered(brigadeiro.id);
+
+                if (brigadeiroQuantityOrdered > 0) {
+                    result += `\t\t\t\t${brigadeiroQuantityOrdered} un. Brigadeiro ${brigadeiro.name}\n`;
+                }
+            }
+
+            result += `\n`;
+        }
+
+        return result;
+    }
+
     public getQuantityOrdered(productID: string): number {
         return this.quantityOrdered[productID]?.length;
     }

@@ -42,29 +42,8 @@ const FinishOrder: React.FC = () => {
                 const quantityOrdered = productOrder.getQuantityOrdered(product.id);
                 totalOrderedForThisProductType += quantityOrdered;
 
-                if (quantityOrdered > 0) {
-                    productTypeMessageSection += `${quantityOrdered} un. ${product.name}\n`;
-
-                    if (productOrder instanceof KitOrder) {
-                        // TODO: Abstract this to an util
-                        const brigadeiroOrdersFromThisKit = productOrder.getBrigadeirosOrdered(product.id);
-
-                        for (let i = 0; i < brigadeiroOrdersFromThisKit.length; i++) {
-                            const brigadeiroOrder = brigadeiroOrdersFromThisKit[i];
-                            productTypeMessageSection += `\t\t- Kit ${i+1}:\n`;
-
-                            for (const brigadeiro of data.brigadeiros) {
-                                const brigadeiroQuantityOrdered = brigadeiroOrder.getQuantityOrdered(brigadeiro.id);
-
-                                if (brigadeiroQuantityOrdered > 0) {
-                                    productTypeMessageSection += `\t\t\t\t${brigadeiroQuantityOrdered} un. Brigadeiro ${brigadeiro.name}\n`;
-                                }
-                            }
-
-                            productTypeMessageSection += `\n`;
-                        }
-                    }
-                }
+                if (quantityOrdered > 0)
+                    productTypeMessageSection += productOrder.getMessageDescription(product.id);
             }
 
             // Only if the product type has orders
