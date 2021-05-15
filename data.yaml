@@ -1,0 +1,134 @@
+name: Brigadeiro Maroto
+about: Está a fim de comer deliciosos brigadeiros? Veja nosso cardápio e saiba como fazer seu pedido!
+slogan: Distribuindo Felicidade!
+shipping_price: 2
+image_url: "/cacos.webp"
+
+contact:
+    phone_number: "+55 11 99001-2896"
+
+social:
+    instagram:
+        url: https://instagram.com/briga_deiromaroto
+        image_url: "/instagram.webp"
+    tiktok:
+        url: https://www.tiktok.com/@brigadeiromaroto
+        image_url: "/tiktok.webp"
+
+website:
+    url: https://brigadeiromaroto.now.sh/
+    favicon: "/brigadeiro.png"
+    banner_url: https://raw.githubusercontent.com/luisfelipesdn12/brigadeiro-maroto-site/master/assets/banner.png
+
+product_types:
+    kit:
+        id: KITS01
+        name: Kits de brigadeiro
+        description: Monte seus kits com doversas opções irresistíveis!
+        products:
+            - id: KIT804
+              name: Kit 04 brigadeiros
+              description: Kit com 04 brigadeiros de sua preferência
+              quantity_on_kit: 4
+              price: 8
+              image_url: "/kits/4.jpeg"
+            - id: KIT116
+              name: Kit 06 brigadeiros
+              description: Kit com 06 brigadeiros de sua preferência
+              quantity_on_kit: 6
+              price: 11
+              image_url: "/kits/6.jpeg"
+            - id: KIT812
+              name: Kit 12 brigadeiros
+              description: Kit com 12 brigadeiros de sua preferência
+              quantity_on_kit: 12
+              price: 20
+              image_url: "/kits/12.jpeg"
+
+    cake:
+        id: CAKE02
+        name: Bolos de Pote
+        description: Feitos de forma totalmente artesanal, a cada colherada uma explosão de sabores!
+        only_pre_ordering: true
+        products:
+            - id: BRIGPT
+              name: Brigadeiro
+              description: Bolo de pote com massa, brigadeiro e creme de chocolate
+              price: 5
+              image_url: "/bolos/brigadeiro.webp"
+            - id: NINHPT
+              name: Leite Ninho
+              description: Bolo de pote com massa, brigadeiro e creme de Leite Ninho
+              price: 5
+              image_url: "/bolos/ninho.webp"
+            - id: CHMOPT
+              name: Chocolate com Morango
+              description: Bolo de pote com massa e creme de chocolate, com pedaços de morango
+              price: 5
+              image_url: "/bolos/chocolate-morango.webp"
+            - id: NIMOPT
+              name: Leite Ninho com Morango
+              description: Bolo de pote com massa e creme de Leite Ninho, com pedaços de morango
+              price: 5
+              image_url: "/bolos/ninho-morango.webp"
+            - id: NICHPT
+              name: Leite Ninho com Chocolate
+              description: Bolo de pote com massa e creme de Leite Ninho e chocolate
+              price: 5
+              image_url: "/bolos/ninho-chocolate.webp"
+
+    brownie:
+        id: BROW03
+        name: Brownies
+        description: Diversas opções de brownies irresistíveis!
+        products:
+            - id: TRADBR
+              name: Tradicional
+              description: Pedaço de brownie irresistível
+              price: 4
+              image_url: "/brownies/tradicional.webp"
+            - id: AVELBR
+              name: Creme de Avelã
+              description: Irresistível brownie recheado de creme de avelã
+              price: 7
+              image_url: "/brownies/creme-de-avela.webp"
+            - id: DOLEBR
+              name: Doce de Leite
+              description: Irresistível brownie recheado com doce de leite cremoso
+              price: 7
+              image_url: "/brownies/doce-de-leite.webp"
+            - id: BRIGBR
+              name: Brigadeiro
+              description: Irresistível brownie recheado com incrível brigadeiro
+              price: 7
+              image_url: "/brownies/brigadeiro.webp"
+
+brigadeiros:
+    - id: CLASS1
+      name: Clássico
+      description: Brigadeiro Tradicional
+      image_url: "/brigadeiros/tradicional.webp"
+    - id: NINU15
+      name: Ninho com Nuttela
+      description: Brigadeiro de leite em pó recheado com Nutella
+      image_url: "/brigadeiros/ninho-nuttela.webp"
+    - id: BEIJI1
+      name: Beijinho
+      description: Brigadeiro de coco
+      image_url: "/brigadeiros/beijinho.webp"
+    - id: BCHPE1
+      name: Bicho de pé
+      description: Brigadeiro de morango
+      image_url: "/brigadeiros/bicho-de-pe.webp"
+    - id: POCA12
+      name: Paçoca
+      description: Brigadeiro de paçoca coberto com paçoca
+      image_url: "/brigadeiros/pacoca.webp"
+    - id: CHUR14
+      name: Churros
+      description: Brigadeiro de doce de leite e canela coberto com açúcar e canela
+      image_url: "/brigadeiros/churros.webp"
+    - id: MARA15
+      name: Maracujá
+      description: Brigadeiro feito com polpa de maracujá coberto com granulado branco
+      image_url: "/brigadeiros/maracuja.webp"
