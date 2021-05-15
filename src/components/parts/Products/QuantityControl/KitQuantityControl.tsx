@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ClickableControl, QuantityControlWrapper } from "./styles";
 import { Divisor } from "../styles";
 import BrigadeiroSelector from "./BrigadeiroSelector";
@@ -14,7 +14,6 @@ const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) =>
 
     const [showBrigadeiroSelector, setShowBrigadeiroSelector] = useState(false);
     const [showCancelMessage, setShowCancelMessage] = useState(false);
-    const [addMessage, setAddMessage] = useState("+ Adicionar um kit");
 
     const startBrigadeiroOrderSelection = () => {
         order.kitOrder.addNewBrigadeiroOrder(productID);
@@ -25,19 +24,16 @@ const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) =>
         Object.assign(newOrder, order);
 
         setOrder(newOrder);
-        setAddMessage("+ Adicionar brigadeiros");
     };
 
     const finishBrigadeiroOrderSelection = () => {
         setShowBrigadeiroSelector(!showBrigadeiroSelector);
         setShowCancelMessage(!showCancelMessage);
-        setAddMessage("+ Adicionar um kit");
     };
 
     const cancelBrigadeiroOrderSelection = () => {
         setShowBrigadeiroSelector(!showBrigadeiroSelector);
         setShowCancelMessage(!showCancelMessage);
-        setAddMessage("+ Adicionar um kit");
 
         order.kitOrder.cancelLastBrigadeiroOrder(productID);
 
@@ -46,6 +42,12 @@ const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) =>
 
         setOrder(newOrder);
     };
+
+    useEffect(() => {
+        if (order.kitOrder.isLastBrigadeiroOrderFull(productID, false)) {
+            finishBrigadeiroOrderSelection();
+        }
+    }, [order]);
 
     return (
         <>
@@ -69,7 +71,7 @@ const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) =>
                         : startBrigadeiroOrderSelection
                     }
                 >
-                    {addMessage}
+                    + Adicionar um kit
                 </ClickableControl>
             </QuantityControlWrapper>
             <QuantityControlWrapper
