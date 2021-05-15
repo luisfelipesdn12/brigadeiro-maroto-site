@@ -83,6 +83,8 @@ const FinishOrder: React.FC = () => {
             message += `\nTotal: ${priceFormat(order.getTotalPrice())}`;
         }
 
+        console.log(process.env.NODE_ENV === "development" ? message : null);
+
         return encodeURI(
             `https://wa.me/${returnCleanNumber(data.contact.phone_number)}/?text=` + message
         );

@@ -17,8 +17,8 @@ const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) =>
 
     const startBrigadeiroOrderSelection = () => {
         order.kitOrder.addNewBrigadeiroOrder(productID);
-        setShowBrigadeiroSelector(!showBrigadeiroSelector);
-        setShowCancelMessage(!showCancelMessage);
+        setShowBrigadeiroSelector(true);
+        setShowCancelMessage(true);
 
         const newOrder = new Order();
         Object.assign(newOrder, order);
@@ -27,13 +27,13 @@ const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) =>
     };
 
     const finishBrigadeiroOrderSelection = () => {
-        setShowBrigadeiroSelector(!showBrigadeiroSelector);
-        setShowCancelMessage(!showCancelMessage);
+        setShowBrigadeiroSelector(false);
+        setShowCancelMessage(false);
     };
 
     const cancelBrigadeiroOrderSelection = () => {
-        setShowBrigadeiroSelector(!showBrigadeiroSelector);
-        setShowCancelMessage(!showCancelMessage);
+        setShowBrigadeiroSelector(false);
+        setShowCancelMessage(false);
 
         order.kitOrder.cancelLastBrigadeiroOrder(productID);
 
