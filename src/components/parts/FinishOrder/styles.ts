@@ -32,3 +32,40 @@ export const TotalPriceInfo = styled.span`
     font-size: 1.875rem;
     font-weight: 500;
 `;
+
+export const FormContainer = styled.div`
+    font-size: 1.25rem;
+    text-align: left;
+    width: 100%;
+    margin: 1rem 0;
+    margin-bottom: 1.5rem;
+`;
+
+export const Label = styled.label`
+    padding-left: 0.2rem;
+    margin-right: 1rem;
+`;
+
+export const Input = styled.input`
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    width: 100%;
+
+    border-radius: 0.5rem;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 4px;
+    border-left-width: 2px;
+    border-color: #1a202c;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+
+    @media (min-width: 768px) {
+        width: 50%;
+    }
+`;
+
+export const RequiredNotice = styled.p`
+    padding-left: 0.2rem;
+    font-size: 1rem;
+    color: rgb(239, 68, 68);
+`;

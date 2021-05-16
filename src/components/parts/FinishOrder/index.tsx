@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Collapse } from "react-collapse";
 import data from "../../../data";
 import Order from "../../../models/Order";
 import KitOrder from "../../../models/Order/KitOrder";
@@ -11,15 +12,18 @@ import Description from "../../base/Description";
 import Section from "../../base/Section";
 import Title from "../../base/Title";
 import FinalWishList from "./FinalWishList";
+import OrderRequiredInformationForm from "./OrderRequiredInformationForm";
 import ShippingOption from "./ShippingOption";
 import TotalPrice from "./TotalPrice";
 
 const FinishOrder: React.FC = () => {
     const [order, setOrder] = useContext(OrderContext);
 
+    const [isFormFull, setIsFormFull] = useState<boolean>(false);
+
     const getWhatsAppURL = (): string => {
         let hasOrders: boolean = false;
-        let message: string = "Olá, Douglas! Eu vim pelo site e gostaria de fazer um pedido.\n";
+        let message: string = `Olá! Meu nome é ${order.finishOrderFormFields.name}, eu vim pelo site e gostaria de fazer um pedido.\n`;
 
         // For each kind of order:
         for (const productOrder of [order.kitOrder, order.brownieOrder, order.cakeOrder]) {
@@ -78,7 +82,7 @@ const FinishOrder: React.FC = () => {
             }
         }
 
-        return ! (totalOrdered > 0);
+        return totalOrdered <= 0 || !isFormFull;
     }
 
     return (
@@ -109,6 +113,9 @@ const FinishOrder: React.FC = () => {
                 }}
             />
             <TotalPrice />
+            <OrderRequiredInformationForm
+                setIsFormFull={setIsFormFull}
+            />
             <ButtonContainer>
                 <Button
                     label="Enviar Pedido"
@@ -117,7 +124,7 @@ const FinishOrder: React.FC = () => {
                 />
             </ButtonContainer>
         </Section>
-    )
+    );
 }
 
 export default FinishOrder;

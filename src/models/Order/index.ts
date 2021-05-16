@@ -1,3 +1,4 @@
+import { FormFields } from "../../components/parts/FinishOrder/OrderRequiredInformationForm";
 import data from "../../data";
 import Availability from "./Availability";
 import BrownieOrder from "./BrownieOrder";
@@ -6,6 +7,7 @@ import KitOrder from "./KitOrder";
 
 export default class Order {
     includeShipping: boolean = false;
+    finishOrderFormFields: FormFields;
     availability: Availability = new Availability();
 
     kitOrder: KitOrder = new KitOrder();
