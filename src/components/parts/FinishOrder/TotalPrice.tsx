@@ -14,6 +14,6 @@ const TotalPrice: React.FC = () => {
             </TotalPriceInfo>
         </TotalPriceWrapper>
     );
-}
+};
 
 export default TotalPrice;

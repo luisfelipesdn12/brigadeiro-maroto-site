@@ -11,7 +11,7 @@ export interface FormFields {
 }
 
 const OrderRequiredInformationForm: React.FC<OrderRequiredInformationFormProps> = ({
-    setIsFormFull
+    setIsFormFull,
 }) => {
     const [order, setOrder] = useContext(OrderContext);
 
@@ -35,13 +35,13 @@ const OrderRequiredInformationForm: React.FC<OrderRequiredInformationFormProps> 
     };
 
     return (
-        <FormContainer onChange={() => {
-            updateIsFormFull();
-            updateFinishOrderFormFields();
-        }}>
-            <Label htmlFor="name">
-                Qual é o seu nome?
-            </Label>
+        <FormContainer
+            onChange={() => {
+                updateIsFormFull();
+                updateFinishOrderFormFields();
+            }}
+        >
+            <Label htmlFor="name">Qual é o seu nome?</Label>
             <br />
             <Input name="name" type="text" ref={nameInput} />
         </FormContainer>

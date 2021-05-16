@@ -6,6 +6,7 @@ export const ShippingOptionForm = styled.form`
 `;
 
 export const ShippingOptionLabel = styled.label`
+    margin-left: 0.35rem;
     font-size: 1.25rem;
 `;
 
@@ -24,7 +25,7 @@ export const TotalPriceLabel = styled.span`
     color: #1a202c;
     font-size: 1.5rem;
     font-weight: 500;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
 `;
 
 export const TotalPriceInfo = styled.span`

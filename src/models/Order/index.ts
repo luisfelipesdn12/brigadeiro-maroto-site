@@ -17,9 +17,14 @@ export default class Order {
     getTotalPrice(): number {
         let finalValue: number = 0;
 
-        for (const productOrder of [this.kitOrder, this.brownieOrder, this.cakeOrder]) {
+        for (const productOrder of [
+            this.kitOrder,
+            this.brownieOrder,
+            this.cakeOrder,
+        ]) {
             for (const product of productOrder.productTypeInfo.products) {
-                finalValue += productOrder.getQuantityOrdered(product.id) * product.price;
+                finalValue +=
+                    productOrder.getQuantityOrdered(product.id) * product.price;
             }
         }
 

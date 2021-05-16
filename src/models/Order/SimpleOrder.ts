@@ -21,8 +21,9 @@ export default class SimpleOrder {
      */
     public getMessageDescription(productID: string): string {
         const quantity = this.getQuantityOrdered(productID);
-        const name = this.productTypeInfo.products
-            .find(product => product.id == productID)?.name;
+        const name = this.productTypeInfo.products.find(
+            (product) => product.id == productID
+        )?.name;
 
         return `${quantity} un. ${name}\n`;
     }

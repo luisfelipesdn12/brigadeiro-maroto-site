@@ -9,7 +9,9 @@ interface KitQuantityControlProps {
     productID: string;
 }
 
-const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) => {
+const KitQuantityControl: React.FC<KitQuantityControlProps> = ({
+    productID,
+}) => {
     const [order, setOrder] = useContext(OrderContext);
 
     const [showBrigadeiroSelector, setShowBrigadeiroSelector] = useState(false);
@@ -58,8 +60,9 @@ const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) =>
             <Divisor />
             <QuantityControlWrapper
                 style={{
-                    display: (order.kitOrder
-                        .isLastBrigadeiroOrderFull(productID)) ? "flex" : "none",
+                    display: order.kitOrder.isLastBrigadeiroOrderFull(productID)
+                        ? "flex"
+                        : "none",
                     justifyContent: "center",
                     fontWeight: 300,
                 }}
@@ -67,8 +70,8 @@ const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) =>
                 <ClickableControl
                     onClick={
                         showBrigadeiroSelector
-                        ? finishBrigadeiroOrderSelection
-                        : startBrigadeiroOrderSelection
+                            ? finishBrigadeiroOrderSelection
+                            : startBrigadeiroOrderSelection
                     }
                 >
                     + Adicionar um kit
@@ -79,12 +82,18 @@ const KitQuantityControl: React.FC<KitQuantityControlProps> = ({ productID }) =>
                     display: showCancelMessage ? "flex" : "none",
                     justifyContent: "center",
                     fontWeight: 300,
-                    paddingTop: (order.kitOrder
-                        .isLastBrigadeiroOrderFull(productID)) ? "0": "1rem",
+                    paddingTop: order.kitOrder.isLastBrigadeiroOrderFull(
+                        productID
+                    )
+                        ? "0"
+                        : "1rem",
                 }}
             >
-                <ClickableControl onClick={cancelBrigadeiroOrderSelection} style={{ color: "#ef4444" }} >
-                        Cancelar
+                <ClickableControl
+                    onClick={cancelBrigadeiroOrderSelection}
+                    style={{ color: "#ef4444" }}
+                >
+                    Cancelar
                 </ClickableControl>
             </QuantityControlWrapper>
         </>

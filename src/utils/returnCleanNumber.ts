@@ -12,12 +12,14 @@
  * @param phoneNumber The phone number.
  * @returns The digits of the phone number.
  */
- const returnCleanNumber = (phoneNumber: string): string => {
-    return phoneNumber === undefined ? undefined : phoneNumber
-        .replaceAll(" ", "")
-        .replaceAll("+", "")
-        .replaceAll("-", "")
-        .toString();
-}
+const returnCleanNumber = (phoneNumber: string): string => {
+    return phoneNumber === undefined
+        ? undefined
+        : phoneNumber
+              .replaceAll(" ", "")
+              .replaceAll("+", "")
+              .replaceAll("-", "")
+              .toString();
+};
 
 export default returnCleanNumber;

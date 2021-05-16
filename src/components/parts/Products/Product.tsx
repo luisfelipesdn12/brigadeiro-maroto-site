@@ -54,11 +54,9 @@ const Product: React.FC<ProductProps> = ({ product, productType }) => {
                 <ProductPrice>{priceFormat(product.price)}</ProductPrice>
                 <ProductDescription>{product.description}</ProductDescription>
                 {productType.id === "KITS01" ? null : showAvailability()}
-                {productType.id === "KITS01"
-                ? <BrigadeirosOnKitDisplay
-                        productID={product.id}
-                    />
-                : null}
+                {productType.id === "KITS01" ? (
+                    <BrigadeirosOnKitDisplay productID={product.id} />
+                ) : null}
             </ProductInfo>
             <Divisor />
             <QuantityControl productID={product.id} productType={productType} />

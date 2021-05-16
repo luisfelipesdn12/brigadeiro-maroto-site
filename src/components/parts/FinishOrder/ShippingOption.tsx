@@ -12,12 +12,11 @@ const ShippingOption: React.FC<ShippingOptionProps> = ({ handleChange }) => {
                 name="shipping-option"
                 onChange={handleChange}
             />
-            <ShippingOptionLabel
-                htmlFor="shipping-option"
-            > Entregar (R$ 2.00)
+            <ShippingOptionLabel htmlFor="shipping-option">
+                Entregar (R$ 2.00)
             </ShippingOptionLabel>
         </ShippingOptionForm>
-    )
-}
+    );
+};
 
 export default ShippingOption;

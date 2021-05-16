@@ -8,27 +8,35 @@ const FinalWishList: React.FC = () => {
 
     return (
         <FinalWishListWrapper>
-            {[order.kitOrder, order.brownieOrder, order.cakeOrder].map(productOrder => {
-                return (
-                    <>
-                        {productOrder.productTypeInfo.products.map(product => {
-                            const quantityOrdered = productOrder.getQuantityOrdered(product.id);
+            {[order.kitOrder, order.brownieOrder, order.cakeOrder].map(
+                (productOrder) => {
+                    return (
+                        <>
+                            {productOrder.productTypeInfo.products.map(
+                                (product) => {
+                                    const quantityOrdered = productOrder.getQuantityOrdered(
+                                        product.id
+                                    );
 
-                            if (quantityOrdered > 0) {
-                                return (
-                                    <WishItem
-                                        product={product}
-                                        quantityOrdered={quantityOrdered}
-                                        key={product.id}
-                                    />
-                                );
-                            }
-                        })}
-                    </>
-                );
-            })}
+                                    if (quantityOrdered > 0) {
+                                        return (
+                                            <WishItem
+                                                product={product}
+                                                quantityOrdered={
+                                                    quantityOrdered
+                                                }
+                                                key={product.id}
+                                            />
+                                        );
+                                    }
+                                }
+                            )}
+                        </>
+                    );
+                }
+            )}
         </FinalWishListWrapper>
-    )
-}
+    );
+};
 
 export default FinalWishList;

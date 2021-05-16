@@ -31,10 +31,13 @@ export default class KitOrder {
         let result = "";
 
         const quantity = this.getQuantityOrdered(productID);
-        const name = this.productTypeInfo.products
-            .find(product => product.id == productID)?.name;
+        const name = this.productTypeInfo.products.find(
+            (product) => product.id == productID
+        )?.name;
 
-        const brigadeiroOrdersFromThisKit = this.getBrigadeirosOrdered(productID);
+        const brigadeiroOrdersFromThisKit = this.getBrigadeirosOrdered(
+            productID
+        );
 
         result += `${quantity} un. ${name}\n`;
 
@@ -43,7 +46,9 @@ export default class KitOrder {
             result += `\t\t- Kit ${i + 1}:\n`;
 
             for (const brigadeiro of data.brigadeiros) {
-                const brigadeiroQuantityOrdered = brigadeiroOrder.getQuantityOrdered(brigadeiro.id);
+                const brigadeiroQuantityOrdered = brigadeiroOrder.getQuantityOrdered(
+                    brigadeiro.id
+                );
 
                 if (brigadeiroQuantityOrdered > 0) {
                     result += `\t\t\t\t${brigadeiroQuantityOrdered} un. Brigadeiro ${brigadeiro.name}\n`;
@@ -74,10 +79,13 @@ export default class KitOrder {
         this.quantityOrdered[productID].pop();
     }
 
-    public isLastBrigadeiroOrderFull(productID: string, defaultReturn: boolean = true): boolean {
-        const lastBrigadeiroOrder: BrigadeiroOrder = this.quantityOrdered[productID][
-            this.quantityOrdered[productID].length - 1
-        ];
+    public isLastBrigadeiroOrderFull(
+        productID: string,
+        defaultReturn: boolean = true
+    ): boolean {
+        const lastBrigadeiroOrder: BrigadeiroOrder = this.quantityOrdered[
+            productID
+        ][this.quantityOrdered[productID].length - 1];
 
         if (lastBrigadeiroOrder) {
             return (

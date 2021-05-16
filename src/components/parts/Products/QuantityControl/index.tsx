@@ -40,8 +40,8 @@ const QuantityControl: React.FC<QuantityControlProps> = ({
     })();
 
     const quantity = productTypeOrder
-                    ? order[productTypeOrder].getQuantityOrdered(productID)
-                    : order.kitOrder.getQuantityOrdered(productID);
+        ? order[productTypeOrder].getQuantityOrdered(productID)
+        : order.kitOrder.getQuantityOrdered(productID);
 
     const handleSub = (): void => {
         let newQuantity = quantity - 1;

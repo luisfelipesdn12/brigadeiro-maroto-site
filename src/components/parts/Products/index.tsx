@@ -5,7 +5,7 @@ import { Divisor, DivisorContainer } from "./styles";
 const Products: React.FC = () => {
     return (
         <>
-            {Object.values(data.product_types).map(productType => {
+            {Object.values(data.product_types).map((productType) => {
                 return (
                     <>
                         <SubProductsSection

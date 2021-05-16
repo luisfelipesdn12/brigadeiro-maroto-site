@@ -27,7 +27,7 @@ const BrigadeiroQuantityControl: React.FC<BrigadeiroQuantityControlProps> = ({
             newBrigadeiroOrders.length - 1
         ].updateProductQuantity(
             brigadeiroID,
-            (brigadeiroQuantity - 1 >= 0 ? brigadeiroQuantity - 1 : 0),
+            brigadeiroQuantity - 1 >= 0 ? brigadeiroQuantity - 1 : 0
         );
 
         order.kitOrder.updateBrigadeirosOrdered(kitID, newBrigadeiroOrders);

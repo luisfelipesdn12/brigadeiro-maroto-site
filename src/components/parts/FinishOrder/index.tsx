@@ -26,7 +26,11 @@ const FinishOrder: React.FC = () => {
         let message: string = `Olá! Meu nome é ${order.finishOrderFormFields.name}, eu vim pelo site e gostaria de fazer um pedido.\n`;
 
         // For each kind of order:
-        for (const productOrder of [order.kitOrder, order.brownieOrder, order.cakeOrder]) {
+        for (const productOrder of [
+            order.kitOrder,
+            order.brownieOrder,
+            order.cakeOrder,
+        ]) {
             let totalOrderedForThisProductType: number = 0;
 
             /**
@@ -39,15 +43,19 @@ const FinishOrder: React.FC = () => {
              * final message dependent if there
              * are orders for some product of the type.
              */
-            let productTypeMessageSection: string = `\n*${productOrder.productTypeInfo.name}*\n`
+            let productTypeMessageSection: string = `\n*${productOrder.productTypeInfo.name}*\n`;
 
             // For each product of this product type:
             for (const product of productOrder.productTypeInfo.products) {
-                const quantityOrdered = productOrder.getQuantityOrdered(product.id);
+                const quantityOrdered = productOrder.getQuantityOrdered(
+                    product.id
+                );
                 totalOrderedForThisProductType += quantityOrdered;
 
                 if (quantityOrdered > 0)
-                    productTypeMessageSection += productOrder.getMessageDescription(product.id);
+                    productTypeMessageSection += productOrder.getMessageDescription(
+                        product.id
+                    );
             }
 
             // Only if the product type has orders
@@ -69,21 +77,27 @@ const FinishOrder: React.FC = () => {
         console.log(process.env.NODE_ENV === "development" ? message : null);
 
         return encodeURI(
-            `https://wa.me/${returnCleanNumber(data.contact.phone_number)}/?text=` + message
+            `https://wa.me/${returnCleanNumber(
+                data.contact.phone_number
+            )}/?text=` + message
         );
-    }
+    };
 
     const sendButtonIsDisabled = (): boolean => {
         let totalOrdered = 0;
 
-        for (const productOrder of [order.kitOrder, order.brownieOrder, order.cakeOrder]) {
+        for (const productOrder of [
+            order.kitOrder,
+            order.brownieOrder,
+            order.cakeOrder,
+        ]) {
             for (const product of productOrder.productTypeInfo.products) {
                 totalOrdered += productOrder.getQuantityOrdered(product.id);
             }
         }
 
         return totalOrdered <= 0 || !isFormFull;
-    }
+    };
 
     return (
         <Section
@@ -99,9 +113,7 @@ const FinishOrder: React.FC = () => {
                 color="#744210"
                 textAlign="left"
             />
-            <Description
-                content="Clique para adicionar ou remover sabores e envie seu pedido automaticamente pelo WhatsApp!"
-            />
+            <Description content="Clique para adicionar ou remover sabores e envie seu pedido automaticamente pelo WhatsApp!" />
             <FinalWishList />
             <ShippingOption
                 handleChange={(_e) => {
@@ -113,18 +125,16 @@ const FinishOrder: React.FC = () => {
                 }}
             />
             <TotalPrice />
-            <OrderRequiredInformationForm
-                setIsFormFull={setIsFormFull}
-            />
+            <OrderRequiredInformationForm setIsFormFull={setIsFormFull} />
             <ButtonContainer>
                 <Button
                     label="Enviar Pedido"
-                    handleClick={() => open(getWhatsAppURL(), '_blank')}
+                    handleClick={() => open(getWhatsAppURL(), "_blank")}
                     isDisabled={sendButtonIsDisabled()}
                 />
             </ButtonContainer>
         </Section>
     );
-}
+};
 
 export default FinishOrder;
