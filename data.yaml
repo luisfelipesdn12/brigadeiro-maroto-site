@@ -145,3 +145,7 @@ brigadeiros:
       name: Oreo
       description: Brigadeiro de chocolate branco com pedaços de oreo
       image_url: "/brigadeiros/oreo.webp"
+    - id: COLOR1
+      name: Color Fest
+      description: Brigadeiro de morango, chocolate e chocolate branco coberto com confeitos de chocolate
+      image_url: "/brigadeiros/color-fest.webp"
