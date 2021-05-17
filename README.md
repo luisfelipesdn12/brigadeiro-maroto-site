@@ -1,18 +1,36 @@
 
-# new-brigadeiro-maroto
+# brigadeiro-maroto
 
-A website I've made for my friend to sell brigadeiros online.
+A simple website I've made for my friend to sell brigadeiros (Brazilian desert) online.
 
-## Screenshots
+---
 
-![Website Header Screenshot](https://i.ibb.co/xSBvjr5/Captura-de-tela-de-2021-04-13-22-02-20.png)
+## Features
+
+### Products selectors
+
+- Checks availability of products
+- Support nested selection in case of brigadeiro kits
+
+![There are 3 screenshots, side-by-side. The first is the website header, with branding logo and links to social media. The second, shows the a product selector for brownie. The third, shows a subselector for insert brigadeiros on a kit.](public/screenshots/header-simple-kit.png)
+
+### Order Finalization
+
+- Displays an overview of selected products
+- Get required information about the client
+- Validates and fetch location by CEP
+- Build and send automatically a WhatsApp message with the order information
+
+![There are 3 screenshots, side-by-side. The first is an overview of selected products, showing the price. The second is the form to get the required information. The third is the message screenshot on WhatsApp, with the order.](public/screenshots/finish-order.png)
+
+---
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-git clone https://github.com/luisfelipesdn12/new-brigadeiro-maroto.git
+git clone https://github.com/luisfelipesdn12/brigadeiro-maroto.git
 ```
 
 Go to the project directory
@@ -35,6 +53,8 @@ Build and start the project
 yarn build && yarn start
 # npm run start
 ```
+
+---
 
 ## Tech Stack
 
