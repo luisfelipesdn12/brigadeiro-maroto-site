@@ -102,6 +102,16 @@ product_types:
               description: Irresistível brownie recheado com incrível brigadeiro
               price: 7
               image_url: "/brownies/brigadeiro.webp"
+            - id: NINHBR
+              name: Brigadeiro de Ninho
+              description: Um brownie delicioso e crocante, com um recheio cremoso de brigadeiro de leite ninho
+              price: 7
+              image_url: /brownies/brigadeiro-ninho.webp
+            - id: NIORBR
+              name: Ninho e Oreo
+              description: Um brownie delicioso e crocante, com um recheio cremoso de brigadeiro de leite ninho e oreo
+              price: 7
+              image_url: /brownies/ninho-oreo.webp
 
 brigadeiros:
     - id: CLASS1
@@ -132,3 +142,7 @@ brigadeiros:
       name: Maracujá
       description: Brigadeiro feito com polpa de maracujá coberto com granulado branco
       image_url: "/brigadeiros/maracuja.webp"
+    - id: OREO15
+      name: Oreo
+      description: Brigadeiro de chocolate branco com pedaços de oreo
+      image_url: "/brigadeiros/oreo.webp"
