@@ -75,9 +75,9 @@ const FinishOrder: React.FC = () => {
         }
 
         if (hasOrders) {
-            message += order.includeShipping ?
-                `\nTotal: ${priceFormat(order.getTotalPrice())} (+ frete)` :
-                `\nTotal: ${priceFormat(order.getTotalPrice())}`;
+            message += order.includeShipping
+                ? `\nTotal: ${priceFormat(order.getTotalPrice())} (+ frete)`
+                : `\nTotal: ${priceFormat(order.getTotalPrice())}`;
         }
 
         process.env.NODE_ENV === "development" ? console.log(message) : null;

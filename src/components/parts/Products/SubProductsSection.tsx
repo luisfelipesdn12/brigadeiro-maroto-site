@@ -25,6 +25,9 @@ const SubProductsSection: React.FC<SubProductsSectionProps> = ({
                 textAlign={"left"}
             />
             <Description content={productType.description} />
+            {productType.only_pre_ordering ? (
+                <Description color="#744210" content="Somente sob encomenda" />
+            ) : null}
             <ProductList>
                 {productType.products.map((p) => (
                     <Product product={p} productType={productType} key={p.id} />
