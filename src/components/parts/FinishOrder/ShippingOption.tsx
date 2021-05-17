@@ -1,7 +1,8 @@
+import { ChangeEventHandler } from "react";
 import { ShippingOptionForm, ShippingOptionLabel } from "./styles";
 
 interface ShippingOptionProps {
-    handleChange: (e: React.FormEvent) => void;
+    handleChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 const ShippingOption: React.FC<ShippingOptionProps> = ({ handleChange }) => {

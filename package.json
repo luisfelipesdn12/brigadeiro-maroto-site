@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/react-collapse": "^5.0.0",
+    "cep-promise": "^4.1.0",
     "js-yaml-loader": "^1.2.2",
     "next": "latest",
     "react": "^16.8.0",

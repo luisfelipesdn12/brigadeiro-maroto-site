@@ -49,6 +49,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
     font-size: 1.2rem;
+    margin-bottom: 1rem;
     padding: 0.5rem;
     width: 100%;
 
@@ -63,9 +64,13 @@ export const Input = styled.input`
     @media (min-width: 768px) {
         width: 50%;
     }
+
+    ::placeholder {
+        opacity: 0.75;
+    }
 `;
 
-export const RequiredNotice = styled.p`
+export const FormNotice = styled.p`
     padding-left: 0.2rem;
     font-size: 1rem;
     color: rgb(239, 68, 68);

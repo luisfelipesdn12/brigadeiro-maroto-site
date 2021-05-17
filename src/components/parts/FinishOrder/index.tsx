@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Collapse } from "react-collapse";
 import data from "../../../data";
 import Order from "../../../models/Order";
@@ -19,6 +19,9 @@ import TotalPrice from "./TotalPrice";
 const FinishOrder: React.FC = () => {
     const [order, setOrder] = useContext(OrderContext);
 
+    const [includeShippingHook, setIncludeShippingHook] = useState<boolean>(
+        false
+    );
     const [isFormFull, setIsFormFull] = useState<boolean>(false);
 
     const getWhatsAppURL = (): string => {
@@ -68,6 +71,7 @@ const FinishOrder: React.FC = () => {
 
         if (order.includeShipping) {
             message += "\nGostaria de incluir a entrega\n";
+            message += `${order.finishOrderFormFields.street}, ${order.finishOrderFormFields.streetNumber} - ${order.finishOrderFormFields.neighborhood} - ${order.finishOrderFormFields.city} - ${order.finishOrderFormFields.CEP}\n`;
         }
 
         if (hasOrders) {
@@ -116,8 +120,9 @@ const FinishOrder: React.FC = () => {
             <Description content="Clique para adicionar ou remover sabores e envie seu pedido automaticamente pelo WhatsApp!" />
             <FinalWishList />
             <ShippingOption
-                handleChange={(_e) => {
+                handleChange={() => {
                     order.includeShipping = !order.includeShipping;
+                    setIncludeShippingHook(!includeShippingHook);
 
                     const newOrder = new Order();
                     Object.assign(newOrder, order);
@@ -125,7 +130,10 @@ const FinishOrder: React.FC = () => {
                 }}
             />
             <TotalPrice />
-            <OrderRequiredInformationForm setIsFormFull={setIsFormFull} />
+            <OrderRequiredInformationForm
+                setIsFormFull={setIsFormFull}
+                includeShippingHook={includeShippingHook}
+            />
             <ButtonContainer>
                 <Button
                     label="Enviar Pedido"
