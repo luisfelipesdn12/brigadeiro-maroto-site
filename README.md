@@ -30,7 +30,7 @@ A simple website I've made for my friend to sell brigadeiros (Brazilian desert) 
 Clone the project
 
 ```bash
-git clone https://github.com/luisfelipesdn12/brigadeiro-maroto.git
+git clone https://github.com/luisfelipesdn12/brigadeiro-maroto-site.git
 ```
 
 Go to the project directory
