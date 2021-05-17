@@ -30,19 +30,19 @@ product_types:
               description: Kit com 04 brigadeiros de sua preferência
               quantity_on_kit: 4
               price: 8
-              image_url: "/kits/4.jpeg"
+              image_url: "/kits/4.webp"
             - id: KIT116
               name: Kit 06 brigadeiros
               description: Kit com 06 brigadeiros de sua preferência
               quantity_on_kit: 6
               price: 11
-              image_url: "/kits/6.jpeg"
+              image_url: "/kits/6.webp"
             - id: KIT812
               name: Kit 12 brigadeiros
               description: Kit com 12 brigadeiros de sua preferência
               quantity_on_kit: 12
               price: 20
-              image_url: "/kits/12.jpeg"
+              image_url: "/kits/12.webp"
 
     cake:
         id: CAKE02
