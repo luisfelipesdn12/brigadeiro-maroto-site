@@ -28,8 +28,6 @@ export default class Order {
             }
         }
 
-        if (this.includeShipping) finalValue += data.shipping_price;
-
         return finalValue;
     }
 }

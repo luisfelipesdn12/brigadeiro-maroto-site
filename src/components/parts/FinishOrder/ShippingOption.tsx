@@ -14,7 +14,7 @@ const ShippingOption: React.FC<ShippingOptionProps> = ({ handleChange }) => {
                 onChange={handleChange}
             />
             <ShippingOptionLabel htmlFor="shipping-option">
-                Entregar (R$ 2.00)
+                Entregar (+ frete)
             </ShippingOptionLabel>
         </ShippingOptionForm>
     );

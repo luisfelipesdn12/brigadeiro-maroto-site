@@ -6,7 +6,6 @@ export default interface Data {
     name: string;
     about: string;
     slogan: string;
-    shipping_price: number;
     image_url: string;
     contact: {
         phone_number: string;
