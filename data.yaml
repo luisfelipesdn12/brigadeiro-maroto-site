@@ -24,7 +24,7 @@ product_types:
     kit:
         id: KITS01
         name: Kits de brigadeiro
-        description: Monte seus kits com doversas opções irresistíveis!
+        description: Monte seus kits com diversas opções irresistíveis!
         products:
             - id: KIT804
               name: Kit 04 brigadeiros
