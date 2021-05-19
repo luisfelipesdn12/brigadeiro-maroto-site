@@ -74,13 +74,17 @@ const OrderRequiredInformationForm: React.FC<OrderRequiredInformationFormProps> 
     };
 
     const fetchLocationInfoFromCEP = () => {
-        const CEPWithoutSeparator: string = CEPInput.current?.value.replace(
-            "-",
-            ""
-        );
+        const CEP_PATTERN = /\d{5}-?\d{3}/;
 
-        if (CEPWithoutSeparator.length === 8) {
-            cep(CEPWithoutSeparator)
+        if (CEP_PATTERN.test(CEPInput.current?.value)) {
+            streetInput.current.value = null;
+            cityInput.current.value = null;
+            neighborhoodInput.current.value = null;
+            streetInput.current.placeholder = "Buscando rua...";
+            cityInput.current.placeholder = "Buscando cidade...";
+            neighborhoodInput.current.placeholder = "Buscando bairro...";
+
+            cep(CEPInput.current?.value.replace("-", ""))
                 .then((response: any) => {
                     streetInput.current.value = response.street;
                     cityInput.current.value = response.city;
@@ -96,6 +100,10 @@ const OrderRequiredInformationForm: React.FC<OrderRequiredInformationFormProps> 
                     setisCEPValid(false);
                 });
         } else {
+            streetInput.current.placeholder = "ex.: Av. Paulista";
+            cityInput.current.placeholder = "ex.: São Paulo";
+            neighborhoodInput.current.placeholder = "ex.: Bela Vista";
+
             setisCEPValid(true);
         }
     };
