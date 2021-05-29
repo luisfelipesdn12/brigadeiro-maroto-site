@@ -1,8 +1,8 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Head from "next/head";
-import OrderContext from '../src/store/OrderContext';
+import OrderContext from "../src/store/OrderContext";
 import useGlobalState from "../src/store/useGlobalState";
-import theme from '../src/theme';
+import theme from "../src/theme";
 import data from "../src/data";
 
 const GlobalStyle = createGlobalStyle`
@@ -106,10 +106,15 @@ const App = ({ Component, pageProps }) => {
                 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" />
 
                 <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
 
                 {/* Primary Meta Tags */}
-                <title>{data.name}: {data.slogan}</title>
+                <title>
+                    {data.name}: {data.slogan}
+                </title>
                 <meta name="title" content={data.name} />
                 <meta name="description" content={data.about} />
 
@@ -125,10 +130,17 @@ const App = ({ Component, pageProps }) => {
                 <meta property="twitter:url" content={data.website.url} />
                 <meta property="twitter:title" content={data.name} />
                 <meta property="twitter:description" content={data.about} />
-                <meta property="twitter:image" content={data.website.banner_url} />
+                <meta
+                    property="twitter:image"
+                    content={data.website.banner_url}
+                />
 
                 {/* Icon */}
-                <link rel="shortcut icon" href={data.website.favicon} type="image/x-icon" />
+                <link
+                    rel="shortcut icon"
+                    href={data.website.favicon}
+                    type="image/x-icon"
+                />
             </Head>
             <OrderContext.Provider value={[order, actions]}>
                 <GlobalStyle />
@@ -138,6 +150,6 @@ const App = ({ Component, pageProps }) => {
             </OrderContext.Provider>
         </>
     );
-}
+};
 
 export default App;

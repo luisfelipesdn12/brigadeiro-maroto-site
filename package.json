@@ -5,8 +5,8 @@
     "dev": "xdg-open http://localhost:3000 && next",
     "build": "next build",
     "start": "next start",
-    "lint": "yarn prettier --check --ignore-unknown ./src/**",
-    "lint:fix": "yarn prettier --write --ignore-unknown ./src/**"
+    "lint": "yarn prettier --check --ignore-unknown ./src/** ./pages/**",
+    "lint:fix": "yarn prettier --write --ignore-unknown ./src/** ./pages/**"
   },
   "dependencies": {
     "@types/react-collapse": "^5.0.0",
