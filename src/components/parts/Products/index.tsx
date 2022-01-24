@@ -5,9 +5,9 @@ import { Divisor, DivisorContainer } from "./styles";
 const Products: React.FC = () => {
     return (
         <>
-            {Object.values(data.product_types).map((productType) => {
+            {Object.values(data.product_types).map((productType, i) => {
                 return (
-                    <>
+                    <div key={i}>
                         <SubProductsSection
                             productType={productType}
                             key={productType.id}
@@ -15,7 +15,7 @@ const Products: React.FC = () => {
                         <DivisorContainer>
                             <Divisor />
                         </DivisorContainer>
-                    </>
+                    </div>
                 );
             })}
         </>

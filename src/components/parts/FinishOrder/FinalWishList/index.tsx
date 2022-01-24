@@ -9,9 +9,9 @@ const FinalWishList: React.FC = () => {
     return (
         <FinalWishListWrapper>
             {[order.kitOrder, order.brownieOrder, order.cakeOrder].map(
-                (productOrder) => {
+                (productOrder, i) => {
                     return (
-                        <>
+                        <div key={i}>
                             {productOrder.productTypeInfo.products.map(
                                 (product) => {
                                     const quantityOrdered = productOrder.getQuantityOrdered(
@@ -31,7 +31,7 @@ const FinalWishList: React.FC = () => {
                                     }
                                 }
                             )}
-                        </>
+                        </div>
                     );
                 }
             )}

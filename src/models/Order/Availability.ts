@@ -1,7 +1,3 @@
-const SHEET_ID: string = "1JJePQcZowP0vOfdL5s6-yjHtxpKL-ghEYke4_pxL8-s";
-const PAGE: number = 1;
-const URL: string = `https://spreadsheets.google.com/feeds/cells/${SHEET_ID}/${PAGE}/public/full?alt=json`;
-
 export default class Availability {
     private quantity: { [productID: string]: number } = {};
 
@@ -10,7 +6,7 @@ export default class Availability {
     }
 
     private fetchQuantity() {
-        fetch(URL)
+        fetch("/api/spreadsheet")
             .then((response) => {
                 if (!response.ok) throw new Error("Response is not OK");
 
@@ -18,16 +14,16 @@ export default class Availability {
             })
             .then((data) => {
                 const rows = {};
-                const entries = data.feed.entry;
+                const rowsFields: any[] = data.sheets[0].data[0].rowData;
 
-                for (const entry of entries) {
-                    const row = entry.gs$cell.row;
-                    const col = entry.gs$cell.col;
+                for (let row = 1; row <= rowsFields.length; row++) {
+                    const values = rowsFields[row - 1].values;
 
-                    if (col == 1) continue;
-
-                    if (!rows[row]) rows[row] = [];
-                    rows[row].push(entry.content.$t);
+                    for (const value of values) {
+                        const text = value.formattedValue;
+                        if (!rows[row]) rows[row] = [];
+                        rows[row].push(text);
+                    }
                 }
 
                 return rows;

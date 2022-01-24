@@ -17,7 +17,7 @@ const BrigadeiroSelector: React.FC<BrigadeiroSelectorProps> = ({
             <div style={{ padding: "1rem 0" }}>
                 {data.brigadeiros.map((brigadeiro, index) => {
                     return (
-                        <>
+                        <div key={index}>
                             {index !== 0 ? (
                                 <Divisor style={{ opacity: "0.5" }} />
                             ) : null}
@@ -26,7 +26,7 @@ const BrigadeiroSelector: React.FC<BrigadeiroSelectorProps> = ({
                                 brigadeiro={brigadeiro}
                                 key={brigadeiro.id}
                             />
-                        </>
+                        </div>
                     );
                 })}
             </div>
