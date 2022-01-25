@@ -1,3 +1,13 @@
+interface GoogleAPIRow {
+    values: {
+        formattedValue: string;
+        effectiveValue: {
+            stringValue?: string;
+            numberValue?: number;
+        };
+    }[];
+}
+
 export default class Availability {
     private quantity: { [productID: string]: number } = {};
 
@@ -13,28 +23,17 @@ export default class Availability {
                 return response.json();
             })
             .then((data) => {
-                const rows = {};
-                const rowsFields: any[] = data.sheets[0].data[0].rowData;
+                const rows: GoogleAPIRow[] = data.sheets[0].data[0].rowData;
 
-                for (let row = 1; row <= rowsFields.length; row++) {
-                    const values = rowsFields[row - 1].values;
+                rows.forEach((row, i) => {
+                    // Ignores the first row
+                    if (i === 0) return;
 
-                    for (const value of values) {
-                        const text = value.formattedValue;
-                        if (!rows[row]) rows[row] = [];
-                        rows[row].push(text);
-                    }
-                }
+                    const id = row.values[0].effectiveValue.stringValue;
+                    const quantity = row.values[2].effectiveValue.numberValue;
 
-                return rows;
-            })
-            .then((rows) => {
-                const IDs = rows["1"];
-                const quantities = rows["3"];
-
-                for (let i = 0; i < IDs.length; i++) {
-                    this.quantity[IDs[i]] = quantities[i];
-                }
+                    this.quantity[id] = quantity;
+                });
             })
             .catch((error) => {
                 throw error;
